@@ -570,7 +570,8 @@ class Component extends DCLogic {
           email: s.email.trim(), phone: s.phone.trim(),
           years_in_business: s.years, monthly_revenue: s.revenue,
           credit_score: s.credit, equipment_needed: s.need,
-          submitted_at: new Date().toISOString(), source_url: location.href
+          submitted_at: new Date().toLocaleString("en-US", { timeZone: "America/Chicago", dateStyle: "short", timeStyle: "medium" }) + " CT",
+          source_url: location.href
         };
         const done = () => this.setState({ submitted: true, sending: false });
         fetch("/api/lead", {
