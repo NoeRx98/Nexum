@@ -432,9 +432,9 @@ const STATS = [
   { num: "500+", label: "Businesses financed" }
 ];
 const TESTI = [
-  { quote: "We needed a dozer to land a municipal contract and our bank wanted three weeks just to look at it. Nexum had an approval to me the next afternoon. Straight terms, no games.", name: "Marcus D.", role: "Owner, D&S Grading · Texas", initials: "MD" },
-  { quote: "I'd been turned down twice because of a rough year. They actually understood my numbers and found a lender who did too. Financed a used excavator with a down payment I could live with.", name: "Ray T.", role: "Ray Thornton Excavating · Ohio", initials: "RT" },
-  { quote: "Two trucks and a trailer financed in under a week. My advisor picked up every call and walked me through Section 179 so I knew exactly what I was saving. This is how it should work.", name: "Alicia M.", role: "Fleet Manager, Meridian Haul · Georgia", initials: "AM" }
+  { quote: "We needed a dozer to land a municipal contract and our bank wanted three weeks just to look at it. Nexum had an approval to me the next afternoon. Straight terms, no games.", name: "Marcus D.", role: "Texas", initials: "MD" },
+  { quote: "I'd been turned down twice because of a rough year. They actually understood my numbers and found a lender who did too. Financed a used excavator with a down payment I could live with.", name: "Ray T.", role: "Ohio", initials: "RT" },
+  { quote: "Two trucks and a trailer financed in under a week. My advisor picked up every call and walked me through Section 179 so I knew exactly what I was saving. This is how it should work.", name: "Alicia M.", role: "Georgia", initials: "AM" }
 ];
 const ic = p => React.createElement("span", { style: { display: "flex" }, dangerouslySetInnerHTML: { __html: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>` } });
 const FEATURES = [
@@ -570,11 +570,10 @@ class Component extends DCLogic {
           email: s.email.trim(), phone: s.phone.trim(),
           years_in_business: s.years, monthly_revenue: s.revenue,
           credit_score: s.credit, equipment_needed: s.need,
-          submitted_at: new Date().toLocaleString("en-US", { timeZone: "America/Chicago", dateStyle: "short", timeStyle: "medium" }) + " CT",
-          source_url: location.href
+          submitted_at: new Date().toISOString(), source_url: location.href
         };
         const done = () => this.setState({ submitted: true, sending: false });
-        fetch("/api/lead", {
+        fetch("https://services.leadconnectorhq.com/hooks/ue96iOLnDCrrS0tZ99Sv/webhook-trigger/f7ef735c-1c8e-4df2-b6f0-9102f661e693", {
           method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
         }).then(done).catch(done);
         setTimeout(() => { if (this.state.sending) done(); }, 4000);
