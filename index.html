@@ -573,7 +573,7 @@ class Component extends DCLogic {
           submitted_at: new Date().toISOString(), source_url: location.href
         };
         const done = () => this.setState({ submitted: true, sending: false });
-        fetch("https://services.leadconnectorhq.com/hooks/ue96iOLnDCrrS0tZ99Sv/webhook-trigger/f7ef735c-1c8e-4df2-b6f0-9102f661e693", {
+        fetch("/api/lead", {
           method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
         }).then(done).catch(done);
         setTimeout(() => { if (this.state.sending) done(); }, 4000);
