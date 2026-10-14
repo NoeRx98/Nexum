@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" href="/vendor/react.production.min.js" as="script">
+<link rel="preload" href="/vendor/react-dom.production.min.js" as="script">
+<script>
+// Serve React from our own domain instead of unpkg.com. Same files, byte for byte
+// (they match the SRI hashes pinned in support.js), so one third-party outage can't blank the page.
+window.__resources = {
+  "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "/vendor/react.production.min.js",
+  "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "/vendor/react-dom.production.min.js"
+};
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -17,11 +27,11 @@
 <meta property="og:title" content="Nexum Commercial Finance | DFW & Nationwide Equipment Financing">
 <meta property="og:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions in 24–48 hours, no obligation.">
 <meta property="og:url" content="https://nexumcf.com/">
-<meta property="og:image" content="https://nexumcf.com/uploads/nexum-logo.png">
+<meta property="og:image" content="https://nexumcf.com/uploads/nexum-share.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nexum Commercial Finance | DFW & Nationwide Equipment Financing">
 <meta name="twitter:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions in 24–48 hours, no obligation.">
-<meta name="twitter:image" content="https://nexumcf.com/uploads/nexum-logo.png">
+<meta name="twitter:image" content="https://nexumcf.com/uploads/nexum-share.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +40,7 @@
   "description": "Nexum Commercial Finance connects established businesses with commercial equipment financing and business lines of credit through a network of third-party lenders. Based in the Dallas-Fort Worth area, serving businesses nationwide.",
   "url": "https://nexumcf.com/",
   "logo": "https://nexumcf.com/uploads/nexum-logo.png",
-  "image": "https://nexumcf.com/uploads/nexum-logo.png",
+  "image": "https://nexumcf.com/uploads/nexum-share.png",
   "areaServed": [
     { "@type": "City", "name": "Dallas-Fort Worth" },
     { "@type": "Country", "name": "United States" }
@@ -104,13 +114,13 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 @media(max-width:760px){.mobileCta{display:block!important}body{padding-bottom:74px}}
 @keyframes tilt3d{0%,100%{transform:rotateY(-9deg) rotateX(5deg)}50%{transform:rotateY(9deg) rotateX(2deg)}}
 .tilt3d{animation:tilt3d 9s ease-in-out infinite;transform-style:preserve-3d}
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv{transform:translateY(16px);transition:transform .7s cubic-bezier(.2,.7,.3,1)}
 .rv.on{opacity:1;transform:none}
 .floaty{animation:floaty 6s ease-in-out infinite}
 @media(max-width:560px){.grid-2{grid-template-columns:1fr!important}.cta{width:100%;text-align:center}}
 @media(max-width:640px){.hero-card{margin-top:10px}.hero-card .tilt3d{animation:none!important;transform:none!important;padding:20px!important}.hero-card .floaty{animation:none!important}}
 @media(max-width:760px){.deco-glow{display:none!important}.floaty{animation:none!important}.tilt3d{animation:none!important}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{transform:none!important}}
 </style>
 </helmet>
 
@@ -119,7 +129,7 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 <header style="position:sticky;top:0;z-index:100;background:rgba(245,245,245,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
 <div style="max-width:1180px;margin:0 auto;padding:14px clamp(16px,4vw,32px);display:flex;align-items:center;justify-content:space-between;gap:20px">
 <div style="display:flex;align-items:center;gap:12px">
-<img src="uploads/nexum-logo.png" alt="Nexum Commercial Finance" style="height:44px;width:auto;display:block">
+<img src="uploads/nexum-logo.webp" width="560" height="144" alt="Nexum Commercial Finance" style="height:44px;width:auto;display:block">
 </div>
 <nav style="display:flex;align-items:center;gap:clamp(14px,2.4vw,30px)">
 <a href="#advantage" style="color:var(--navy2);font-size:14px;font-weight:500;display:none" class="navlink" style-hover="color:var(--blue)">Advantage</a>
@@ -346,7 +356,7 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 <div style="max-width:1180px;margin:0 auto">
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:center;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.1)">
 <div style="display:flex;align-items:center;gap:12px">
-<img src="uploads/nexum-logo.png" alt="Nexum Commercial Finance" style="height:42px;width:auto;display:block;border-radius:8px">
+<img src="uploads/nexum-logo.webp" width="560" height="144" alt="Nexum Commercial Finance" style="height:42px;width:auto;display:block;border-radius:8px">
 </div>
 <button onClick="{{ openForm }}" style="background:var(--blue);color:#fff;font-size:14px;font-weight:600;padding:13px 26px;border:none;border-radius:9px;cursor:pointer;transition:background .2s" style-hover="background:var(--blue-l)">Apply Now</button>
 </div>
@@ -374,7 +384,7 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:24px clamp(20px,4vw,34px) 0">
 <div>
 <div style="display:flex;align-items:center;gap:9px;margin-bottom:12px">
-<img src="uploads/nexum-logo.png" alt="Nexum Commercial Finance" style="height:38px;width:auto;display:block">
+<img src="uploads/nexum-logo.webp" width="560" height="144" alt="Nexum Commercial Finance" style="height:38px;width:auto;display:block">
 </div>
 <div style="font-size:clamp(22px,3.6vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.1">{{ modalTitle }}</div>
 </div>
@@ -479,6 +489,19 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 </sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+// Ad attribution: first-touch UTM and click IDs, kept for the visit so they survive in-page navigation.
+const ATTR = (() => {
+  const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid", "fbclid", "msclkid"];
+  let saved = {};
+  try { saved = JSON.parse(sessionStorage.getItem("nx_attr") || "{}"); } catch (e) {}
+  const q = new URLSearchParams(location.search), fresh = {};
+  keys.forEach(k => { if (q.get(k)) fresh[k] = q.get(k); });
+  const out = Object.keys(fresh).length ? fresh : saved;
+  if (!out.landing_page) out.landing_page = location.href;
+  if (!out.referrer && document.referrer) out.referrer = document.referrer;
+  try { sessionStorage.setItem("nx_attr", JSON.stringify(out)); } catch (e) {}
+  return out;
+})();
 const YEARS = ["1 year+", "2 years", "3 years+", "5 years+", "10 years+"];
 const REVENUE = ["$5K+ / month", "$10K+ / month", "$15K+ / month", "$20K+ / month"];
 const CREDIT = ["Under 600", "600+", "650+", "700+", "750+"];
@@ -630,7 +653,8 @@ class Component extends DCLogic {
           years_in_business: s.years, monthly_revenue: s.revenue,
           credit_score: s.credit, equipment_needed: s.need,
           submitted_at: new Date().toLocaleString("en-US", { timeZone: "America/Chicago", dateStyle: "short", timeStyle: "medium" }) + " CT",
-          source_url: location.href
+          source_url: location.href,
+          ...ATTR
         };
         const done = () => this.setState({ submitted: true, sending: false });
         fetch("/api/lead", {
