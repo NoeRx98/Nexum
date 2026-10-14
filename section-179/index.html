@@ -325,7 +325,7 @@ form.addEventListener("submit",function(e){
  e.preventDefault();if(!valid(3))return;
  var btn=$("submit");btn.disabled=true;btn.textContent="Sending…";
  var first=$("first").value.trim(),last=$("last").value.trim();
- var lead={funnel:"Nexum Year-End Equipment (Section 179 page)",first_name:first,last_name:last,full_name:(first+" "+last).trim(),
+ var lead={funnel:"Nexum Commercial Finance",lead_page:"section-179",first_name:first,last_name:last,full_name:(first+" "+last).trim(),
   email:$("email").value.trim(),phone:$("phone").value.trim(),
   years_in_business:$("years").value,monthly_revenue:$("revenue").value,credit_score:$("credit").value,
   equipment_needed:"Commercial equipment financing",equipment_type:state.type,equipment_condition:state.cond,equipment_price_range:$("price").value,

@@ -12,7 +12,8 @@ in the trigger only after GHL receives a request containing them: submit one tes
 
 | Field | Values / example | Notes |
 |---|---|---|
-| `funnel` | `Nexum Commercial Finance` (main page), `Nexum Year-End Equipment (Section 179 page)` | Which page sent the lead; use it to tag or route |
+| `funnel` | `Nexum Commercial Finance` | Unchanged on every form, so existing triggers and filters keep working |
+| `lead_page` | `main`, `section-179` | **New.** Which page sent the lead; use it to tag or route |
 | `first_name`, `last_name`, `full_name`, `email`, `phone` | | Standard contact fields |
 | `years_in_business` | `1 year+` … `10 years+` | |
 | `monthly_revenue` | `$5K+ / month` … `$20K+ / month` | |
