@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"><style>
+:root{--W:1080px;--H:1080px;--u:1px;--pad:64px 64px 56px;--logo:84px;--h1:80}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:var(--W);height:var(--H);background:#0B1530}
+.ad{position:relative;width:var(--W);height:var(--H);overflow:hidden;font-family:Montserrat,sans-serif;color:#fff;display:flex;flex-direction:column;padding:var(--pad)}
+.ad>*{position:relative;z-index:2}
+.bg{position:absolute!important;inset:0;z-index:0!important}
+.bg img{width:100%;height:100%;object-fit:cover}
+.shade{position:absolute!important;inset:0;z-index:1!important}
+.logo{height:var(--logo);width:auto;display:block;align-self:flex-start}
+.eyebrow{font-size:calc(var(--u)*24);font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#9DB8F5}
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.02;font-size:calc(var(--u)*var(--h1))}
+h1 em{font-style:normal;color:#9DB8F5}
+.sub{font-size:calc(var(--u)*30);font-weight:500;line-height:1.35;color:#D3DCEE}
+.cta{display:flex;align-items:center;gap:calc(var(--u)*22)}
+.btn{background:#1D4ED8;color:#fff;font-weight:800;font-size:calc(var(--u)*32);padding:calc(var(--u)*24) calc(var(--u)*38);border-radius:calc(var(--u)*16);box-shadow:0 18px 40px -16px rgba(29,78,216,.9);white-space:nowrap}
+.cta small{font-size:calc(var(--u)*22);font-weight:600;color:#C7D2E8;line-height:1.35}
+.note{font-size:calc(var(--u)*16);line-height:1.4;color:rgba(214,222,238,.72);font-weight:500}
+.spacer{flex:1}
+.chip{justify-self:start;display:inline-flex;align-items:center;gap:10px;background:#F59E0B;color:#0B1530;font-weight:900;font-size:calc(var(--u)*22);letter-spacing:.12em;text-transform:uppercase;padding:calc(var(--u)*10) calc(var(--u)*18);border-radius:999px}
+
+.ad{background:radial-gradient(120% 80% at 80% 0%,#1E3A8A 0%,#0F1E45 45%,#0B1530 100%)}
+.head{margin-top:40px;display:grid;gap:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:var(--gt)}
+.grid figure{position:relative;border-radius:18px;overflow:hidden;background:#0F172A;box-shadow:0 0 0 1px rgba(157,184,245,.18)}
+.grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.grid figcaption{position:absolute;left:12px;bottom:12px;background:rgba(11,18,34,.8);padding:6px 14px;border-radius:999px;font-size:20px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#C9D6F2}
+.bottom{display:grid;gap:20px}
+body.s1_1{--gt:30px} body.s1_1 .grid{grid-template-columns:repeat(4,1fr)} body.s1_1 .grid img{aspect-ratio:3/4} body.s1_1 .grid figcaption{font-size:16px;left:8px;bottom:8px;padding:5px 10px}
+body.s4_5{--gt:36px} body.s4_5 .grid img{aspect-ratio:16/10} body.s9_16{--gt:60px}
+body.s9_16 .grid{gap:18px}
+</style></head><body class="s1_1"><div class="ad"><img class="logo" src="../logo.png" alt="Nexum Commercial Finance">
+<div class="head"><h1>New or used.<br><em>We finance the iron.</em></h1><p class="sub">Excavators, dozers, loaders, trucks and trailers for established businesses.</p></div>
+<div class="grid"><figure><img src="../excavator.jpg"><figcaption>Excavators</figcaption></figure><figure><img src="../dozer.jpg"><figcaption>Dozers</figcaption></figure><figure><img src="../wheel-loader.jpg"><figcaption>Loaders</figcaption></figure><figure><img src="../dump-truck.jpg"><figcaption>Trucks</figcaption></figure></div>
+<div class="spacer"></div>
+<div class="bottom"><div class="cta"><span class="btn">Get matched</span><small>40+ lenders · decisions<br>often in 24–48 hrs</small></div><p class="note">Nexum Commercial Finance is a broker, not a lender. Financing subject to lender approval.</p></div></div></body></html>
