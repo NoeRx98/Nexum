@@ -10,6 +10,9 @@ in the trigger only after GHL receives a request containing them: submit one tes
 
 ## Sent by both forms
 
+Both pages send exactly the same keys and option values. The year-end page shows shorter chip labels
+(for example `$20K+`), but the value sent is the full original text (`$20K+ / month`).
+
 | Field | Values / example | Notes |
 |---|---|---|
 | `funnel` | `Nexum Commercial Finance` | Unchanged on every form, so existing triggers and filters keep working |
@@ -18,7 +21,7 @@ in the trigger only after GHL receives a request containing them: submit one tes
 | `years_in_business` | `1 year+` … `10 years+` | |
 | `monthly_revenue` | `$5K+ / month` … `$20K+ / month` | |
 | `credit_score` | `Under 600` … `750+` | |
-| `equipment_needed` | `Commercial equipment financing`, `Business line of credit` | Year-end page always sends equipment financing |
+| `equipment_needed` | `Commercial equipment financing`, `Business line of credit` | Same two values on both pages |
 | `sms_consent` | `yes` / `no` | **Only text contacts where this is `yes`** |
 | `sms_consent_text` | exact opt-in wording, empty when `no` | Proof of what the person agreed to |
 | `submitted_at` | `10/14/26, 4:01:47 PM CT` | Central time |
@@ -29,14 +32,6 @@ in the trigger only after GHL receives a request containing them: submit one tes
 | `msclkid` | Microsoft Ads click ID | |
 | `landing_page`, `referrer` | URLs | |
 | `client_ip`, `relayed_at` | added by the relay | |
-
-## Sent by the year-end page only (`/section-179/`)
-
-| Field | Values |
-|---|---|
-| `equipment_type` | `Excavator`, `Dozer`, `Wheel loader`, `Dump truck`, `Truck & trailer`, `Other equipment` |
-| `equipment_condition` | `New`, `Used` |
-| `equipment_price_range` | `Under $50,000`, `$50,000 – $150,000`, `$150,000 – $500,000`, `$500,000 – $1M`, `Over $1M` |
 
 ## Texting rules
 

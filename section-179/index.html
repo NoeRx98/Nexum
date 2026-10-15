@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Year-End Equipment Financing | Nexum Commercial Finance</title>
-<meta name="description" content="Financing equipment before December 31? One application reaches 40+ lenders. Decisions often in 24–48 hours. DFW-based, serving businesses nationwide.">
+<title>Year-End Equipment Financing &amp; Business Lines of Credit | Nexum Commercial Finance</title>
+<meta name="description" content="Financing equipment before December 31, or need working capital? One application reaches 40+ lenders. Decisions often in 24–48 hours. DFW-based, serving businesses nationwide.">
 <link rel="canonical" href="https://nexumcf.com/section-179/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nexum Commercial Finance">
-<meta property="og:title" content="Year-End Equipment Financing | Nexum Commercial Finance">
+<meta property="og:title" content="Year-End Equipment Financing &amp; Business Lines of Credit | Nexum">
 <meta property="og:description" content="One application reaches 40+ lenders. Decisions often in 24–48 hours.">
 <meta property="og:url" content="https://nexumcf.com/section-179/">
 <meta property="og:image" content="https://nexumcf.com/uploads/nexum-share.png">
@@ -45,8 +45,26 @@ h1,h2,h3{line-height:1.06;letter-spacing:-.025em;text-wrap:balance}
 
 /* hero */
 .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden}
-.hero .bg{position:absolute;inset:0}
-.hero .bg img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:62% 50%}
+/* hero night scene: the photo is sized to "cover" with container units so the light layers stay pinned to the machines at any screen size */
+.hero .bg{position:absolute;top:0;right:0;bottom:0;left:0;overflow:hidden;container-type:size}
+.par{position:absolute;top:0;right:0;bottom:0;left:0;transform:translate3d(calc(var(--px,0)*-12px),calc(var(--py,0)*-8px),0) scale(1.03);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.scene{position:absolute;--w:max(100cqw,calc(100cqh*1.7872));--h:max(100cqh,calc(100cqw*.5595));width:var(--w);height:var(--h);left:calc((100cqw - var(--w))*.62);top:calc((100cqh - var(--h))*.5);transform-origin:72% 56%;animation:drift 30s ease-in-out infinite alternate}
+.scene img{width:100%;height:100%;max-width:none}
+.scene i{position:absolute;display:block;pointer-events:none}
+.lt{left:var(--x);top:var(--y);width:3.2%;height:5.7%;margin:-2.85% 0 0 -1.6%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,248,225,.95),rgba(255,226,160,.35) 45%,rgba(255,226,160,0));mix-blend-mode:screen;animation:breathe 4.6s ease-in-out infinite;animation-delay:var(--d,0s)}
+.lt.sm{width:2%;height:3.6%;margin:-1.8% 0 0 -1%}
+.red{left:var(--x);top:var(--y);width:1.1%;height:2%;margin:-1% 0 0 -.55%;border-radius:50%;background:radial-gradient(closest-side,#ff5a4f,rgba(255,60,50,.45) 50%,rgba(255,60,50,0));opacity:0;animation:blink 2.6s steps(1,end) infinite;animation-delay:var(--d,0s)}
+.pool{left:47%;top:58%;width:36%;height:24%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,226,170,.30),rgba(255,226,170,.10) 55%,rgba(255,226,170,0));mix-blend-mode:screen;animation:sweep 16s ease-in-out infinite alternate}
+.motes{position:absolute;left:0;top:44%;width:100%;height:18%}
+.motes i{left:var(--x);bottom:0;width:3px;height:3px;border-radius:50%;background:#FFE9B8;opacity:0;animation:mote var(--t) linear infinite;animation-delay:var(--d)}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.07)}}
+@keyframes breathe{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.18)}}
+@keyframes blink{0%{opacity:1}35%{opacity:0}}
+@keyframes sweep{from{transform:translateX(-22%)}to{transform:translateX(12%)}}
+@keyframes mote{0%{opacity:0;transform:translate(0,0)}15%{opacity:.8}70%{opacity:.5}100%{opacity:0;transform:translate(-18px,-90px)}}
+.hero.off .scene,.hero.off .scene i{animation-play-state:paused}
+@supports not (width:1cqw){.scene{top:0;left:0;width:100%;height:100%;animation:none}.scene img{object-fit:cover;object-position:62% 50%}.scene i,.motes{display:none}}
+@media (max-width:600px){.pool,.motes{display:none}}
 .hero::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(90deg,rgba(11,21,48,.92) 0%,rgba(11,21,48,.72) 38%,rgba(11,21,48,.25) 70%,rgba(11,21,48,.35) 100%),linear-gradient(0deg,rgba(11,21,48,.9) 0%,rgba(11,21,48,0) 30%)}
 .hero>.wrap{position:relative;z-index:2}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
@@ -72,28 +90,58 @@ h1,h2,h3{line-height:1.06;letter-spacing:-.025em;text-wrap:balance}
 
 /* form card */
 .card{background:#fff;color:var(--navy);border-radius:18px;padding:24px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6)}
-.prog{display:flex;gap:6px;margin-bottom:16px}.prog i{flex:1;height:4px;border-radius:4px;background:var(--line);transition:background .3s}.prog i.on{background:var(--blue)}
+.prog{display:flex;gap:6px;margin-bottom:16px}.prog i{flex:1;height:4px;border-radius:4px;background:var(--line);overflow:hidden}.prog i::after{content:"";display:block;height:100%;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s cubic-bezier(.2,.8,.2,1)}.prog i.on::after{transform:scaleX(1)}
 .card .k{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray2)}
 .card h2{font-size:22px;font-weight:800;letter-spacing:-.01em;margin-top:4px}
 .step{display:grid;gap:16px}
 .step[hidden]{display:none}
-.machines{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.mc{position:relative;display:block;width:100%;padding:0;margin:0;border:0;border-radius:12px;overflow:hidden;cursor:pointer;background:#0F172A;color:#fff;text-align:left;box-shadow:0 0 0 1px rgba(15,23,42,.12),0 6px 16px -10px rgba(15,23,42,.6);transition:transform .2s ease,box-shadow .2s ease}
-.mc:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(59,130,246,.5),0 14px 24px -12px rgba(15,23,42,.7)}
-.mc .media{display:block;overflow:hidden;background:#0F172A}
-.mc img{display:block;width:100%;height:auto;max-width:100%;transition:transform .35s ease}
-.mc:hover img,.mc[aria-pressed=true] img{transform:scale(1.05)}
-.mc .cap{display:block;padding:8px 10px 9px;background:#0B1222;border-top:1px solid rgba(255,255,255,.06)}
-.mc .cap b{display:block;font-size:13px;font-weight:700;line-height:1.2}
-.mc .cap small{display:block;font-size:10.5px;color:#93A3C4;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mc .tick{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:#1D4ED8;opacity:0;transition:opacity .18s;box-shadow:0 0 0 2px #fff}
-.mc .tick::after{content:"";position:absolute;left:6px;top:6px;width:9px;height:5px;border:2.5px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg)}
-.mc[aria-pressed=true]{box-shadow:0 0 0 3px #1D4ED8,0 14px 28px -12px rgba(29,78,216,.7)}
-.mc[aria-pressed=true] .tick{opacity:1}
+.need{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nc{position:relative;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;cursor:pointer;background:#0B1222;color:#fff;box-shadow:0 0 0 1px rgba(15,23,42,.12),0 8px 18px -12px rgba(15,23,42,.7);transition:transform .2s ease,box-shadow .2s ease;-webkit-tap-highlight-color:transparent}
+.nc:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(59,130,246,.55),0 16px 26px -14px rgba(15,23,42,.8)}
+.nc input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.nc:has(input:focus-visible){outline:3px solid var(--blue-l);outline-offset:2px}
+.nc.on{box-shadow:0 0 0 3px #1D4ED8,0 16px 30px -12px rgba(29,78,216,.75)}
+.nc .media{display:grid;overflow:hidden;background:#0F172A}
+.reel>picture{grid-area:1/1;opacity:0;transform:scale(1.06);transition:opacity .55s ease,transform 1.8s cubic-bezier(.2,.8,.2,1)}
+.reel>picture.on{opacity:1;transform:scale(1);z-index:2}
+.reel>picture.prev{opacity:1;transform:scale(1);z-index:1;transition:none}
+.reel img,.loc svg{display:block;width:100%;height:auto;max-width:100%}
+.reel .tag{grid-area:1/1;z-index:3;align-self:end;justify-self:start;margin:0 0 8px 8px;padding:3px 8px;border-radius:20px;background:rgba(11,18,34,.72);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C9D6F2;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.nc .txt{display:block;flex:1;padding:10px 12px 12px;border-top:1px solid rgba(255,255,255,.06)}
+.nc .txt b{display:block;font-size:15px;font-weight:800;line-height:1.2}
+.nc .txt small{display:block;margin-top:3px;font-size:11.5px;color:#93A3C4;line-height:1.35}
+.nc .tick{position:absolute;top:9px;right:9px;width:24px;height:24px;border-radius:50%;background:#1D4ED8;opacity:0;transform:scale(.6);transition:opacity .18s,transform .25s cubic-bezier(.3,1.6,.5,1);box-shadow:0 0 0 2px #fff}
+.nc .tick::after{content:"";position:absolute;left:7px;top:7px;width:9px;height:5px;border:2.5px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg)}
+.nc.on .tick{opacity:1;transform:scale(1)}
+.loc text{font-family:var(--f);font-weight:700}
+.loc .l1{font-size:26px;letter-spacing:3px;fill:#9DB8F5}
+.loc .fill{transform-box:fill-box;transform-origin:0 50%}
+.loc .steps text{font-size:50px;font-weight:800;fill:#fff;letter-spacing:-1px;opacity:0}
+.loc .steps .s1{opacity:1}
+.loc.play .fill{animation:locfill 4.8s cubic-bezier(.65,0,.35,1) both}
+.loc.play .s1{animation:locs1 4.8s both}.loc.play .s2{animation:locs2 4.8s both}.loc.play .s3{animation:locs3 4.8s both}
+@keyframes locfill{0%{transform:scaleX(1)}26%,40%{transform:scaleX(.36)}64%,74%{transform:scaleX(1)}96%,100%{transform:scaleX(.62)}}
+@keyframes locs1{0%,36%{opacity:1}42%,100%{opacity:0}}
+@keyframes locs2{0%,40%{opacity:0}46%,72%{opacity:1}78%,100%{opacity:0}}
+@keyframes locs3{0%,76%{opacity:0}82%,100%{opacity:1}}
+.chips{border:0;display:grid;gap:7px;min-width:0}
+.chips legend{font-size:13px;font-weight:600;color:#364152;margin-bottom:7px;padding:0}
+.cg{display:flex;flex-wrap:wrap;gap:6px}
+.cg label{flex:1 1 auto;position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cg input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.cg span{display:block;text-align:center;white-space:nowrap;padding:11px 8px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-size:14px;font-weight:700;color:var(--navy);transition:background .15s,border-color .15s,color .15s}
+.cg label:hover span{border-color:#B9C6E4}
+.cg input:checked+span{background:var(--navy);border-color:var(--navy);color:#fff;animation:pop .22s ease}
+.cg input:focus-visible+span{outline:3px solid var(--blue-l);outline-offset:2px}
+@keyframes pop{0%{transform:scale(.94)}100%{transform:scale(1)}}
+.step.in{animation:stepIn .3s cubic-bezier(.2,.8,.2,1)}
+.step.in.bk{animation-name:stepBack}
+@keyframes stepIn{from{opacity:0;transform:translateX(16px)}}
+@keyframes stepBack{from{opacity:0;transform:translateX(-16px)}}
+.step.in .cg label{animation:chipIn .32s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*22ms + 60ms)}
+@keyframes chipIn{from{opacity:0;transform:translateY(6px)}}
+.card h2:focus{outline:none}
 .lbl{font-size:13px;font-weight:600;color:#364152;display:grid;gap:7px}
-.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.seg button{padding:11px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-weight:700;cursor:pointer}
-.seg button[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
 select,input[type=text],input[type=email],input[type=tel]{width:100%;font-size:16px;padding:12px 13px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--navy)}
 select:focus,input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,78,216,.15)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -104,7 +152,7 @@ select:focus,input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 
 .err{color:var(--err);font-size:13px;font-weight:600}
 .hp{position:absolute;left:-5000px;width:1px;height:1px;overflow:hidden}
 .done{text-align:center;display:grid;gap:12px;justify-items:center;padding-block:8px}
-.done .tick{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(21,128,61,.1);color:var(--ok);font-size:26px;font-weight:700}
+.done .tick{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(21,128,61,.1);color:var(--ok);font-size:26px;font-weight:700}.done.in .tick{animation:pop .4s cubic-bezier(.3,1.6,.5,1)}
 
 /* proof */
 .proof{background:var(--navy);color:#fff}
@@ -161,8 +209,8 @@ footer.ft a{color:#B9C2D3}
 .expired .clock,.expired [data-live]{display:none}
 
 @media (max-width:960px){.hgrid{grid-template-columns:1fr;gap:28px}.proof .wrap{grid-template-columns:1fr 1fr}.proof .s:nth-child(3){border-left:0;padding-left:0}.tl{grid-template-columns:1fr 1fr}.quotes{grid-template-columns:1fr}}
-@media (max-width:600px){.cmp-h{grid-template-columns:1fr 1fr}.cmp-h .q{display:none}.cmp-h span{padding:12px 14px;font-size:11px}.cmp-r{grid-template-columns:1fr 1fr}.cmp-r .q{grid-column:1/-1;padding:14px 14px 6px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray2);background:#fff}.cmp-r>span{padding:10px 14px 14px;font-size:15px}.cmp-r .bk,.cmp-r .nx{align-items:flex-start}.cmp-r .bk::before,.cmp-r .nx::before{flex-basis:18px;height:18px;margin-top:1px}.cmp .big{font-size:26px}.nav .btn .lg{display:none}.nav .btn .sm{display:inline}.machines{grid-template-columns:1fr 1fr;gap:10px}.mc .cap b{font-size:14px}.strip .wrap>span:last-child{display:none}.hgrid{gap:16px}.hgrid>div:first-child{display:contents}.hero h1{margin-top:0}.hero .sub{margin-top:0}.hgrid .clock{order:3;margin-top:4px}.clock .until{flex-basis:100%;max-width:none;margin:0}.hgrid .checks{order:4;margin-top:0}.hgrid .card{order:2}.nav img{height:32px}.hero .sub{font-size:16px}.tl{grid-template-columns:1fr}.proof b{font-size:24px}.row2{grid-template-columns:1fr}.dg{width:34px;height:48px}.dg .rail span{height:48px;line-height:48px;font-size:28px}.sep{line-height:48px}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (max-width:600px){.cmp-h{grid-template-columns:1fr 1fr}.cmp-h .q{display:none}.cmp-h span{padding:12px 14px;font-size:11px}.cmp-r{grid-template-columns:1fr 1fr}.cmp-r .q{grid-column:1/-1;padding:14px 14px 6px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray2);background:#fff}.cmp-r>span{padding:10px 14px 14px;font-size:15px}.cmp-r .bk,.cmp-r .nx{align-items:flex-start}.cmp-r .bk::before,.cmp-r .nx::before{flex-basis:18px;height:18px;margin-top:1px}.cmp .big{font-size:26px}.nav .btn .lg{display:none}.nav .btn .sm{display:inline}.nc .txt b{font-size:14px}.nc .txt{padding:9px 10px 11px}.strip .wrap>span:last-child{display:none}.hgrid{gap:16px}.hgrid>div:first-child{display:contents}.hero h1{margin-top:0}.hero .sub{margin-top:0}.hgrid .clock{order:3;margin-top:4px}.clock .until{flex-basis:100%;max-width:none;margin:0}.hgrid .checks{order:4;margin-top:0}.hgrid .card{order:2}.nav img{height:32px}.hero .sub{font-size:16px}.tl{grid-template-columns:1fr}.proof b{font-size:24px}.row2{grid-template-columns:1fr}.dg{width:34px;height:48px}.dg .rail span{height:48px;line-height:48px;font-size:28px}.sep{line-height:48px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;animation:none!important}.motes{display:none}.lt,.red{opacity:.9}}
 </style>
 </head>
 <body>
@@ -170,14 +218,18 @@ footer.ft a{color:#B9C2D3}
 <div class="strip"><div class="wrap"><span data-live>Tax year 2026 closes in <b id="daysLeft">— days</b>.</span><span>One application · 40+ lenders · decisions often in 24–48 hrs</span></div></div>
 
 <header class="hero">
-<div class="bg"><picture><source type="image/webp" srcset="/uploads/nightshift-hero-800.webp 800w, /uploads/nightshift-hero.webp 1344w" sizes="100vw"><img src="/uploads/nightshift-hero.jpg" srcset="/uploads/nightshift-hero-800.jpg 800w, /uploads/nightshift-hero.jpg 1344w" sizes="100vw" width="1344" height="752" alt="" fetchpriority="high"></picture></div>
+<div class="bg" id="scene" aria-hidden="true"><div class="par"><div class="scene">
+<picture><source type="image/webp" srcset="/uploads/nightshift-hero-800.webp 800w, /uploads/nightshift-hero.webp 1344w" sizes="100vw"><img src="/uploads/nightshift-hero.jpg" srcset="/uploads/nightshift-hero-800.jpg 800w, /uploads/nightshift-hero.jpg 1344w" sizes="100vw" width="1344" height="752" alt="" fetchpriority="high"></picture>
+<i class="pool"></i><i class="lt" style="--x:72.8%;--y:55.6%"></i><i class="lt" style="--x:74.4%;--y:55.5%;--d:-1.3s"></i><i class="lt sm" style="--x:69.9%;--y:60.5%;--d:-2.1s"></i><i class="lt sm" style="--x:88.4%;--y:36.2%;--d:-.7s"></i><i class="lt sm" style="--x:88.5%;--y:52.1%;--d:-2.6s"></i><i class="red" style="--x:88.7%;--y:7.6%"></i><i class="red" style="--x:98.3%;--y:10.2%;--d:-1.2s"></i>
+<span class="motes"><i style="--x:71%;--d:0s;--t:7s"></i><i style="--x:73%;--d:-2s;--t:9s"></i><i style="--x:75%;--d:-4s;--t:8s"></i><i style="--x:70%;--d:-5.5s;--t:10s"></i><i style="--x:74%;--d:-1s;--t:11s"></i><i style="--x:76%;--d:-6s;--t:7.5s"></i><i style="--x:72%;--d:-3.5s;--t:9.5s"></i><i style="--x:77%;--d:-7s;--t:8.5s"></i></span>
+</div></div></div>
 <div class="wrap">
 <div class="nav"><a href="/"><img src="/uploads/nexum-logo-sm.png" width="560" height="144" alt="Nexum Commercial Finance"></a><a class="btn" href="#apply"><span class="lg">Start my application</span><span class="sm">Apply now</span></a></div>
 <div class="hgrid">
 <div>
-<p class="eyebrow" style="color:var(--sky)">Year-end equipment financing</p>
+<p class="eyebrow" style="color:var(--sky)">Year-end equipment financing · Business lines of credit</p>
 <h1 id="h1" data-expired="Equipment financing that <span>moves when you do.</span>">Financing before December 31. <span>Decisions often in 24–48 hours.</span></h1>
-<p class="sub">Timing a purchase around Section 179? Don't let the financing be what makes you miss the year. One short application reaches 40+ lenders in our network, and you compare the offers side by side.</p>
+<p class="sub">Timing a purchase around Section 179? Don't let the financing be what makes you miss the year. One short application reaches 40+ lenders for equipment financing or a business line of credit, and you compare the offers side by side.</p>
 <div class="clock" id="clock" aria-label="Time left in tax year 2026">
 <div class="unit"><div class="digits" data-u="d"></div><small>Days</small></div><div class="sep">:</div>
 <div class="unit"><div class="digits" data-u="h"></div><small>Hours</small></div>
@@ -191,38 +243,39 @@ footer.ft a{color:#B9C2D3}
 <div class="prog" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
 
 <div class="step" data-step="1">
-<div><p class="k">Step 1 of 3 · about 15 seconds</p><h2>What are you financing?</h2></div>
-<div class="machines" role="group" aria-label="Equipment type"><button type="button" class="mc" data-type="Excavator" aria-pressed="false"><span class="media"><picture><source type="image/webp" srcset="/uploads/machines/excavator.webp"><img src="/uploads/machines/excavator.jpg" alt="" width="480" height="362"></picture></span><span class="cap"><b>Excavator</b><small>Mini to large</small></span><span class="tick" aria-hidden="true"></span></button><button type="button" class="mc" data-type="Dozer" aria-pressed="false"><span class="media"><picture><source type="image/webp" srcset="/uploads/machines/dozer.webp"><img src="/uploads/machines/dozer.jpg" alt="" width="480" height="362"></picture></span><span class="cap"><b>Dozer</b><small>Small to large</small></span><span class="tick" aria-hidden="true"></span></button><button type="button" class="mc" data-type="Wheel loader" aria-pressed="false"><span class="media"><picture><source type="image/webp" srcset="/uploads/machines/wheel-loader.webp"><img src="/uploads/machines/wheel-loader.jpg" alt="" width="480" height="362"></picture></span><span class="cap"><b>Wheel loader</b><small>Compact to large</small></span><span class="tick" aria-hidden="true"></span></button><button type="button" class="mc" data-type="Dump truck" aria-pressed="false"><span class="media"><picture><source type="image/webp" srcset="/uploads/machines/dump-truck.webp"><img src="/uploads/machines/dump-truck.jpg" alt="" width="480" height="362"></picture></span><span class="cap"><b>Dump truck</b><small>Single to tri-axle</small></span><span class="tick" aria-hidden="true"></span></button><button type="button" class="mc" data-type="Truck & trailer" aria-pressed="false"><span class="media"><picture><source type="image/webp" srcset="/uploads/machines/truck-trailer.webp"><img src="/uploads/machines/truck-trailer.jpg" alt="" width="480" height="362"></picture></span><span class="cap"><b>Truck &amp; trailer</b><small>Cabs, vans, lowboys</small></span><span class="tick" aria-hidden="true"></span></button><button type="button" class="mc" data-type="Other equipment" aria-pressed="false"><span class="media"><picture><source type="image/webp" srcset="/uploads/machines/other.webp"><img src="/uploads/machines/other.jpg" alt="" width="480" height="362"></picture></span><span class="cap"><b>Other</b><small>Cranes, forklifts</small></span><span class="tick" aria-hidden="true"></span></button></div>
-<div class="lbl">New or used?<div class="seg" role="group" aria-label="New or used"><button type="button" data-cond="New" aria-pressed="false">New</button><button type="button" data-cond="Used" aria-pressed="false">Used</button></div></div>
-<label class="lbl" for="price">About how much?<select id="price" name="price"><option value="">Choose a range</option><option>Under $50,000</option><option>$50,000 – $150,000</option><option>$150,000 – $500,000</option><option>$500,000 – $1M</option><option>Over $1M</option></select></label>
+<div><p class="k">Step 1 of 3 · one tap</p><h2 tabindex="-1">What do you need?</h2></div>
+<div class="need" role="radiogroup" aria-label="What do you need?">
+<label class="nc"><input type="radio" name="need" value="Commercial equipment financing"><span class="media reel" aria-hidden="true"><picture class="on" data-name="Excavator"><source type="image/webp" srcset="/uploads/machines/excavator.webp"><img src="/uploads/machines/excavator.jpg" alt="" width="480" height="362" decoding="async"></picture><picture data-name="Dozer"><source type="image/webp" data-srcset="/uploads/machines/dozer.webp"><img data-src="/uploads/machines/dozer.jpg" alt="" width="480" height="362" decoding="async"></picture><picture data-name="Wheel loader"><source type="image/webp" data-srcset="/uploads/machines/wheel-loader.webp"><img data-src="/uploads/machines/wheel-loader.jpg" alt="" width="480" height="362" decoding="async"></picture><picture data-name="Dump truck"><source type="image/webp" data-srcset="/uploads/machines/dump-truck.webp"><img data-src="/uploads/machines/dump-truck.jpg" alt="" width="480" height="362" decoding="async"></picture><picture data-name="Truck &amp; trailer"><source type="image/webp" data-srcset="/uploads/machines/truck-trailer.webp"><img data-src="/uploads/machines/truck-trailer.jpg" alt="" width="480" height="362" decoding="async"></picture><span class="tag">Excavator</span></span><span class="txt"><b>Equipment financing</b><small>Excavators, dozers, loaders, trucks and trailers. New or used.</small></span><span class="tick" aria-hidden="true"></span></label>
+<label class="nc"><input type="radio" name="need" value="Business line of credit"><span class="media loc" aria-hidden="true"><svg viewBox="0 0 480 362" width="480" height="362" focusable="false"><defs><radialGradient id="locbg" cx=".78" cy=".12" r="1"><stop offset="0" stop-color="#1E3A8A"/><stop offset=".55" stop-color="#0F1E45"/><stop offset="1" stop-color="#0B1530"/></radialGradient><linearGradient id="locfill" x1="0" x2="1"><stop offset="0" stop-color="#1D4ED8"/><stop offset="1" stop-color="#7BA7FF"/></linearGradient></defs><rect width="480" height="362" fill="url(#locbg)"/><g stroke="#fff" stroke-opacity=".05"><path d="M40 0V362"/><path d="M80 0V362"/><path d="M120 0V362"/><path d="M160 0V362"/><path d="M200 0V362"/><path d="M240 0V362"/><path d="M280 0V362"/><path d="M320 0V362"/><path d="M360 0V362"/><path d="M400 0V362"/><path d="M440 0V362"/></g><text x="40" y="84" class="l1">AVAILABLE CREDIT</text><rect x="40" y="112" width="400" height="48" rx="24" fill="#fff" fill-opacity=".08"/><rect class="fill" x="40" y="112" width="400" height="48" rx="24" fill="url(#locfill)"/><g class="steps"><text class="s1" x="40" y="236">Draw</text><text class="s2" x="40" y="236">Repay</text><text class="s3" x="40" y="236">Draw again</text></g><g fill="#9DB8F5" fill-opacity=".22"><rect x="40" y="312" width="22" height="18" rx="3"/><rect x="74" y="300" width="22" height="30" rx="3"/><rect x="108" y="308" width="22" height="22" rx="3"/><rect x="142" y="290" width="22" height="40" rx="3"/><rect x="176" y="304" width="22" height="26" rx="3"/><rect x="210" y="296" width="22" height="34" rx="3"/><rect x="244" y="314" width="22" height="16" rx="3"/><rect x="278" y="286" width="22" height="44" rx="3"/><rect x="312" y="302" width="22" height="28" rx="3"/><rect x="346" y="294" width="22" height="36" rx="3"/><rect x="380" y="306" width="22" height="24" rx="3"/><rect x="414" y="298" width="22" height="32" rx="3"/></g></svg></span><span class="txt"><b>Business line of credit</b><small>Working capital for your business. Draw, repay, draw again.</small></span><span class="tick" aria-hidden="true"></span></label>
+</div>
 <p class="err" id="err1" hidden></p>
 <button class="btn" type="button" data-next>Continue →</button>
 </div>
 
 <div class="step" data-step="2" hidden>
-<div><p class="k">Step 2 of 3</p><h2>About your business</h2></div>
-<label class="lbl" for="years">Time in business<select id="years"><option value="">Choose one</option><option>1 year+</option><option>2 years</option><option>3 years+</option><option>5 years+</option><option>10 years+</option></select></label>
-<label class="lbl" for="revenue">Monthly revenue<select id="revenue"><option value="">Choose one</option><option>$5K+ / month</option><option>$10K+ / month</option><option>$15K+ / month</option><option>$20K+ / month</option></select></label>
-<label class="lbl" for="credit">Estimated credit score<select id="credit"><option value="">Choose one</option><option>Under 600</option><option>600+</option><option>650+</option><option>700+</option><option>750+</option></select></label>
+<div><p class="k">Step 2 of 3 · three taps</p><h2 tabindex="-1">About your business</h2></div>
+<fieldset class="chips"><legend>Years in business</legend><div class="cg"><label style="--i:0"><input type="radio" name="years" value="1 year+"><span>1+</span></label><label style="--i:1"><input type="radio" name="years" value="2 years"><span>2</span></label><label style="--i:2"><input type="radio" name="years" value="3 years+"><span>3+</span></label><label style="--i:3"><input type="radio" name="years" value="5 years+"><span>5+</span></label><label style="--i:4"><input type="radio" name="years" value="10 years+"><span>10+</span></label></div></fieldset>
+<fieldset class="chips"><legend>Monthly revenue</legend><div class="cg"><label style="--i:0"><input type="radio" name="revenue" value="$5K+ / month"><span>$5K+</span></label><label style="--i:1"><input type="radio" name="revenue" value="$10K+ / month"><span>$10K+</span></label><label style="--i:2"><input type="radio" name="revenue" value="$15K+ / month"><span>$15K+</span></label><label style="--i:3"><input type="radio" name="revenue" value="$20K+ / month"><span>$20K+</span></label></div></fieldset>
+<fieldset class="chips"><legend>Estimated credit score</legend><div class="cg"><label style="--i:0"><input type="radio" name="credit" value="Under 600"><span>Under 600</span></label><label style="--i:1"><input type="radio" name="credit" value="600+"><span>600+</span></label><label style="--i:2"><input type="radio" name="credit" value="650+"><span>650+</span></label><label style="--i:3"><input type="radio" name="credit" value="700+"><span>700+</span></label><label style="--i:4"><input type="radio" name="credit" value="750+"><span>750+</span></label></div></fieldset>
 <p class="err" id="err2" hidden></p>
-<div class="nav2"><button class="btn back" type="button" data-back>←</button><button class="btn" type="button" data-next>Continue →</button></div>
+<div class="nav2"><button class="btn back" type="button" data-back aria-label="Back">←</button><button class="btn" type="button" data-next>Continue →</button></div>
 </div>
 
 <div class="step" data-step="3" hidden>
-<div><p class="k">Step 3 of 3</p><h2>Where should we send your options?</h2></div>
+<div><p class="k">Step 3 of 3</p><h2 tabindex="-1">Where should we send your options?</h2></div>
 <div class="row2"><label class="lbl" for="first">First name<input id="first" type="text" autocomplete="given-name"></label><label class="lbl" for="last">Last name<input id="last" type="text" autocomplete="family-name"></label></div>
 <label class="lbl" for="email">Business email<input id="email" type="email" autocomplete="email" inputmode="email"></label>
 <label class="lbl" for="phone">Mobile phone<input id="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
 <label class="consent" for="sms"><input id="sms" type="checkbox"><span id="smsText">Text me about my application. By checking this box, I agree to receive text messages from Nexum Commercial Finance at the number above. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of financing.</span></label>
 <div class="hp" aria-hidden="true"><label>Leave this empty<input id="gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
 <p class="err" id="err3" hidden></p>
-<div class="nav2"><button class="btn back" type="button" data-back>←</button><button class="btn" type="submit" id="submit">See my options</button></div>
+<div class="nav2"><button class="btn back" type="button" data-back aria-label="Back">←</button><button class="btn" type="submit" id="submit">See my options</button></div>
 <p class="fine">No obligation. Checking your options won't affect your credit score. If you move forward with a specific lender, they may run a full credit check as part of underwriting.</p>
 </div>
 
 <div class="step done" data-step="4" hidden aria-live="polite">
 <div class="tick">✓</div>
-<h2 id="doneH">Request received.</h2>
+<h2 id="doneH" tabindex="-1">Request received.</h2>
 <p class="fine" style="font-size:15px">A Nexum advisor is reviewing your request now. Expect to hear from us within 24 hours, often sooner.</p>
 </div>
 </form>
@@ -241,7 +294,7 @@ footer.ft a{color:#B9C2D3}
 <section class="sec"><div class="wrap">
 <p class="eyebrow" style="color:var(--blue)">Why a broker</p>
 <h2 style="margin-top:12px">Your bank is one lender. We bring you 40+.</h2>
-<p class="lede">A bank reviews your deal once and gives you one answer. We send one application to the lenders in our network that fit your equipment and your business, then show you the offers side by side.</p>
+<p class="lede">A bank reviews your deal once and gives you one answer. We send one application to the lenders in our network that fit your deal and your business, then show you the offers side by side.</p>
 <div class="cmp" role="table" aria-label="Your bank compared with Nexum">
 <div class="cmp-h" role="row"><span role="columnheader" class="q"></span><span role="columnheader" class="bk">Your bank</span><span role="columnheader" class="nx">Nexum</span></div>
 <div class="cmp-r" role="row"><span role="rowheader" class="q">Lenders who see your deal</span><span role="cell" class="bk"><b class="big">1</b></span><span role="cell" class="nx"><b class="big">40+</b></span></div>
@@ -277,6 +330,7 @@ footer.ft a{color:#B9C2D3}
 <details><summary>Will checking my options hurt my credit?</summary><p>No. Checking your options won't affect your credit. If you move forward with a specific lender, they may run a full credit check as part of underwriting.</p></details>
 <details><summary>Do I have to put money down?</summary><p>Not always. Because the equipment itself secures the financing, no-money-down and low-down structures are common for qualified borrowers. We'll show you the options side by side so you can protect your cash flow.</p></details>
 <details><summary>Is this a loan or a lease?</summary><p>We offer a range of products, including traditional loans and equipment financing agreements (EFAs). We'll help you choose the structure that best fits your tax and cash-flow needs.</p></details>
+<details><summary>Do you offer business lines of credit?</summary><p>Yes. Along with equipment financing, we arrange business lines of credit for working capital needs through lenders in our network. Choose &ldquo;Business line of credit&rdquo; in step one of the application.</p></details>
 <details><summary>What equipment do you finance?</summary><p>Commercial equipment across construction, transportation, agriculture and manufacturing, new or used: excavators, dozers, loaders, trucks, trailers and specialized machinery.</p></details>
 </div>
 </div></section>
@@ -316,34 +370,67 @@ var q=new URLSearchParams(location.search);keys.forEach(function(k){if(q.get(k))
 var out=Object.keys(fresh).length?fresh:saved;if(!out.landing_page)out.landing_page=location.href;if(!out.referrer&&document.referrer)out.referrer=document.referrer;
 try{sessionStorage.setItem("nx_attr",JSON.stringify(out))}catch(e){}return out})();
 
+/* ---------- hero scene: pause offscreen, pointer parallax on desktop ---------- */
+var hero=document.querySelector(".hero"),scene=$("scene");
+if("IntersectionObserver"in window)new IntersectionObserver(function(en){hero.classList.toggle("off",!en[0].isIntersecting)}).observe(hero);
+if(!reduce&&matchMedia("(pointer:fine)").matches){var raf=0,px=0,py=0;
+ hero.addEventListener("pointermove",function(e){px=e.clientX/innerWidth*2-1;py=e.clientY/innerHeight*2-1;if(!raf)raf=requestAnimationFrame(function(){raf=0;scene.style.setProperty("--px",px.toFixed(3));scene.style.setProperty("--py",py.toFixed(3))})});
+ hero.addEventListener("pointerleave",function(){scene.style.setProperty("--px",0);scene.style.setProperty("--py",0)})}
+
 /* ---------- form ---------- */
-var form=$("form"),steps=form.querySelectorAll(".step"),bars=form.querySelectorAll(".prog i"),cur=1,state={type:"",cond:""};
-function show(n){cur=n;steps.forEach(function(s){s.hidden=+s.getAttribute("data-step")!==n});bars.forEach(function(b,i){b.classList.toggle("on",i<n)});
- var first=form.querySelector('.step[data-step="'+n+'"] select, .step[data-step="'+n+'"] input:not([type=checkbox])');if(n>1&&first)first.focus({preventScroll:true})}
-function pick(group,attr,val){form.querySelectorAll("["+attr+"]").forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute(attr)===val)})}
+var form=$("form"),card=$("apply"),steps=form.querySelectorAll(".step"),bars=form.querySelectorAll(".prog i"),cur=1,tapAt=0,adv=0,auto2=false;
+function pickVal(n){var c=form.querySelector('input[name="'+n+'"]:checked');return c?c.value:""}
+function show(n){var back=n<cur;cur=n;clearTimeout(adv);
+ steps.forEach(function(s){var on=+s.getAttribute("data-step")===n;s.hidden=!on;s.classList.remove("in","bk");if(on&&!reduce){void s.offsetWidth;s.classList.add("in");if(back)s.classList.add("bk")}});
+ bars.forEach(function(b,i){b.classList.toggle("on",i<n)});
+ var st=form.querySelector('.step[data-step="'+n+'"]'),t=n===3?st.querySelector("input"):st.querySelector("h2");if(t)t.focus({preventScroll:true});
+ var r=card.getBoundingClientRect();if(r.top<0)card.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});
+ reelTick()}
+function fail(n,msg){var el=$("err"+n);el.textContent=msg;el.hidden=!msg;return !msg}
+function valid(n){
+ if(n===1)return fail(1,!pickVal("need")?"Choose equipment financing or a business line of credit.":"");
+ if(n===2)return fail(2,!pickVal("years")||!pickVal("revenue")||!pickVal("credit")?"Answer all three so we can match the right lenders.":"");
+ var email=$("email").value.trim(),phone=$("phone").value.replace(/\D/g,"");
+ return fail(3,$("first").value.trim().length<2||!$("last").value.trim()?"Enter your first and last name.":!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)?"Enter a valid email address.":phone.length<10?"Enter a 10-digit mobile number.":"");
+}
+/* Taps move people forward; keyboard arrows only change the answer. */
+form.addEventListener("pointerdown",function(){tapAt=Date.now()});
+function tapped(){return Date.now()-tapAt<1200}
+form.addEventListener("change",function(e){var t=e.target,st=t.closest(".step");if(st)fail(+st.getAttribute("data-step"),"");
+ if(t.name==="need"){form.querySelectorAll(".nc").forEach(function(c){c.classList.toggle("on",c.contains(t))})}
+ if(t.name==="need"&&tapped()){clearTimeout(adv);adv=setTimeout(function(){if(cur===1)show(2)},420)}
+ if((t.name==="years"||t.name==="revenue"||t.name==="credit")&&!auto2&&tapped()&&pickVal("years")&&pickVal("revenue")&&pickVal("credit")){auto2=true;clearTimeout(adv);adv=setTimeout(function(){if(cur===2)show(3)},480)}
+});
 form.addEventListener("click",function(e){
- var m=e.target.closest("[data-type]");if(m){state.type=m.getAttribute("data-type");pick(0,"data-type",state.type);fail(1,"");return}
- var c=e.target.closest("[data-cond]");if(c){state.cond=c.getAttribute("data-cond");pick(0,"data-cond",state.cond);fail(1,"");return}
+ /* tapping the card that is already chosen still moves on */
+ var nc=e.target.closest(".nc");if(nc&&e.target.tagName!=="INPUT"&&nc.classList.contains("on")&&tapped()){clearTimeout(adv);adv=setTimeout(function(){if(cur===1)show(2)},250);return}
  if(e.target.closest("[data-back]")){show(cur-1);return}
  if(e.target.closest("[data-next]")){if(valid(cur))show(cur+1)}
 });
 form.addEventListener("input",function(e){var st=e.target.closest(".step");if(st)fail(+st.getAttribute("data-step"),"")});
-form.addEventListener("change",function(e){var st=e.target.closest(".step");if(st)fail(+st.getAttribute("data-step"),"")});
-function fail(n,msg){var el=$("err"+n);el.textContent=msg;el.hidden=!msg;return !msg}
-function valid(n){
- if(n===1)return fail(1,!state.type?"Pick the equipment you're financing.":!state.cond?"Choose new or used.":!$("price").value?"Choose a price range.":"");
- if(n===2)return fail(2,!$("years").value||!$("revenue").value||!$("credit").value?"Answer all three so we can match the right lenders.":"");
- var email=$("email").value.trim(),phone=$("phone").value.replace(/\D/g,"");
- return fail(3,$("first").value.trim().length<2||!$("last").value.trim()?"Enter your first and last name.":!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)?"Enter a valid email address.":phone.length<10?"Enter a 10-digit mobile number.":"");
-}
+
+/* ---------- step 1 cards: play once, then sit still ---------- */
+var reel=form.querySelector(".reel"),frames=reel.querySelectorAll("picture"),tag=reel.querySelector(".tag"),loc=form.querySelector(".loc"),ri=0,rt=0,running=false,loaded=false;
+function frame(i){frames.forEach(function(f,k){f.classList.toggle("prev",f.classList.contains("on")&&k!==i);f.classList.toggle("on",k===i)});setTimeout(function(){frames.forEach(function(f){f.classList.remove("prev")})},600);tag.textContent=frames[i].getAttribute("data-name").replace("&amp;","&")}
+function reelTick(){if(!running)return;if(cur!==1){running=false;frame(0);return}
+ ri++;if(ri>=frames.length){running=false;frame(0);return}frame(ri);rt=setTimeout(reelTick,1500)}
+function play(){if(reduce||running||cur!==1)return;
+ if(loaded){running=true;ri=0;clearTimeout(rt);rt=setTimeout(reelTick,900)}
+ loc.classList.remove("play");void loc.getBoundingClientRect();loc.classList.add("play")}
+function loadFrames(){var imgs=[];frames.forEach(function(f){var s=f.querySelector("source[data-srcset]"),im=f.querySelector("img");if(s){s.srcset=s.getAttribute("data-srcset");s.removeAttribute("data-srcset");im.src=im.getAttribute("data-src");im.removeAttribute("data-src")}imgs.push(im.decode?im.decode().catch(function(){}):Promise.resolve())});
+ return Promise.all(imgs).then(function(){loaded=true})}
+function start(){if(reduce)return;loadFrames().then(function(){setTimeout(play,500)})}
+if(document.readyState==="complete")start();else addEventListener("load",start);
+if(matchMedia("(pointer:fine)").matches){reel.parentNode.addEventListener("mouseenter",function(){if(!running)play()});loc.parentNode.addEventListener("mouseenter",function(){loc.classList.remove("play");void loc.getBoundingClientRect();loc.classList.add("play")})}
+
 form.addEventListener("submit",function(e){
  e.preventDefault();if(!valid(3))return;
  var btn=$("submit");btn.disabled=true;btn.textContent="Sending…";
  var first=$("first").value.trim(),last=$("last").value.trim();
  var lead={funnel:"Nexum Commercial Finance",lead_page:"section-179",first_name:first,last_name:last,full_name:(first+" "+last).trim(),
   email:$("email").value.trim(),phone:$("phone").value.trim(),
-  years_in_business:$("years").value,monthly_revenue:$("revenue").value,credit_score:$("credit").value,
-  equipment_needed:"Commercial equipment financing",equipment_type:state.type,equipment_condition:state.cond,equipment_price_range:$("price").value,
+  years_in_business:pickVal("years"),monthly_revenue:pickVal("revenue"),credit_score:pickVal("credit"),
+  equipment_needed:pickVal("need"),
   sms_consent:$("sms").checked?"yes":"no",sms_consent_text:$("sms").checked?$("smsText").textContent:"",
   submitted_at:new Date().toLocaleString("en-US",{timeZone:"America/Chicago",dateStyle:"short",timeStyle:"medium"})+" CT",
   source_url:location.href,_gotcha:$("gotcha").value};
