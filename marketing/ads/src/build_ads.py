@@ -68,7 +68,7 @@ body.s1_1 .bg img{object-position:30% 120%}
 """
     body = f"""<div class="bg"><img src="../excavator.jpg"></div><div class="shade"></div>
 {LOGO}
-<div class="head"><h1>Finance your <em>next machine.</em></h1><p class="sub">One application, matched to the right lender. Decisions often in 24–48 hours.</p></div>
+<div class="head"><h1>Finance your <em>next machine.</em></h1><p class="sub">One application, sent only to lenders that fit. Decisions often in 24–48 hours.</p></div>
 <div class="pill"><small>Rates from</small><b>6.99%<sup>*</sup></b><span>for qualified buyers</span></div>
 <div class="spacer"></div>
 <div class="bottom"><div class="cta"><span class="btn">Check my rate</span><small>No credit impact<br>to check your options</small></div><p class="note">{RATE_NOTE}</p></div>"""
@@ -91,7 +91,7 @@ body.s1_1 .vs b{font-size:56px}
     body = f"""<div class="bg"><img src="../yard.jpg"></div><div class="shade"></div>
 {LOGO}
 <div class="head"><h1>We don't send your deal everywhere.<br><em>We send it where it fits.</em></h1></div>
-<div class="vs"><svg viewBox="0 0 200 200" fill="none" aria-hidden="true"><circle cx="100" cy="100" r="92" stroke="#9DB8F5" stroke-opacity=".45" stroke-width="4"/><circle cx="100" cy="100" r="62" stroke="#9DB8F5" stroke-opacity=".7" stroke-width="4"/><circle cx="100" cy="100" r="32" stroke="#fff" stroke-width="5"/><path d="M100 0v52M100 148v52M0 100h52M148 100h52" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="100" r="12" fill="#F59E0B"/></svg><div><b>Matched first.</b><b>Then sent.</b><small>Your file goes only to the lender<br>that fits your deal.</small></div></div>
+<div class="vs"><svg viewBox="0 0 200 200" fill="none" aria-hidden="true"><circle cx="100" cy="100" r="92" stroke="#9DB8F5" stroke-opacity=".45" stroke-width="4"/><circle cx="100" cy="100" r="62" stroke="#9DB8F5" stroke-opacity=".7" stroke-width="4"/><circle cx="100" cy="100" r="32" stroke="#fff" stroke-width="5"/><path d="M100 0v52M100 148v52M0 100h52M148 100h52" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="100" r="12" fill="#F59E0B"/></svg><div><b>Matched first.</b><b>Then sent.</b><small>Your file goes only to lenders<br>that fit your deal.</small></div></div>
 <div class="spacer"></div>
 <div class="bottom"><div class="cta"><span class="btn">See my options</span><small>One 5-minute application<br>No credit impact to check</small></div><p class="note">{BROKER_NOTE}</p></div>"""
     page("G2-right-lender", size, body, css, h1=80)
@@ -115,7 +115,7 @@ body.s9_16 .grid{gap:18px}
 <div class="head"><h1>New or used.<br><em>We finance the iron.</em></h1><p class="sub">Excavators, dozers, loaders, trucks and trailers for established businesses.</p></div>
 <div class="grid">{tiles}</div>
 <div class="spacer"></div>
-<div class="bottom"><div class="cta"><span class="btn">Get matched</span><small>Matched to the right lender<br>Decisions often in 24–48 hrs</small></div><p class="note">{BROKER_NOTE}</p></div>"""
+<div class="bottom"><div class="cta"><span class="btn">Get matched</span><small>Only to lenders that fit<br>Decisions often in 24–48 hrs</small></div><p class="note">{BROKER_NOTE}</p></div>"""
     page("G3-lineup", size, body, css, h1=80)
 
 # ---------------- Year-end campaign ----------------
@@ -224,13 +224,13 @@ body.s1_1{{--bh:640px}} body.s4_5{{--bh:820px}} body.s9_16{{--bh:1180px}}
 def g4(size):
     photo_ad("G4-haul-truck", size, "u-haul-truck.jpg", "50% 55%",
              "Bigger jobs need <em>bigger iron.</em>",
-             "Finance new or used equipment. We match your deal to the right lender. Decisions often in 24–48 hours.",
+             "Finance new or used equipment. We send it only to lenders that fit. Decisions often in 24–48 hours.",
              "See my options", "No credit impact<br>to check", BROKER_NOTE)
 
 def g5(size):
     photo_ad("G5-semi", size, "u-semi.jpg", "60% 60%",
              "Your next truck, <em>financed.</em>",
-             "Trucks and trailers for established businesses. One application, sent only to the lender that fits.",
+             "Trucks and trailers for established businesses. One application, sent only to lenders that fit.",
              "Get matched", "5-minute<br>application", BROKER_NOTE)
 
 def g6(size):
@@ -262,20 +262,20 @@ print("built", len(os.listdir(OUT)), "pages")
 def g7(size):
     photo_ad("G7-excavator", size, "excavator.jpg", "50% 70%",
              "Built for contractors, <em>not paperwork.</em>",
-             "One 5-minute application, matched to the right lender. No credit impact to check your options.",
+             "One 5-minute application, sent only to lenders that fit. No credit impact to check your options.",
              "See my options", "", BROKER_NOTE)
 
 def g8(size):
     photo_ad("G8-bank-said-no", size, "wheel-loader.jpg", "50% 70%",
              "Turned down <em>by your bank?</em>",
-             "Your bank is one opinion. We know which lender fits your deal and send it straight there.",
+             "Your bank is one opinion. We send your deal only to lenders that fit it.",
              "Get a second look", "No credit impact<br>to check", BROKER_NOTE)
 
 def g9(size):
     photo_ad("G9-truck-trailer", size, "truck-trailer.jpg", "45% 70%",
              "Trucks. Trailers. <em>Lowboys.</em>",
              "Financing for established hauling businesses. Decisions often in 24–48 hours.",
-             "Get matched", "Matched to the<br>right lender", BROKER_NOTE)
+             "Get matched", "Only to lenders<br>that fit", BROKER_NOTE)
 
 def list_ad(name, size, img, pos, chip, h1, items, btn, small, note, h1size=84):
     """Numbered steps or a checklist over a darkened photo. No testimonials."""
@@ -309,7 +309,7 @@ def g10(size):
     list_ad("G10-three-steps", size, "yard.jpg", "80% 75%", "How it works",
             "Financing in <em>three steps.</em>",
             [("1", "Apply in 5 minutes", "One short application, no credit impact to check"),
-             ("2", "We pick the right lender", "Your file goes only where it fits"),
+             ("2", "We pick lenders that fit", "Your file goes only where it fits"),
              ("3", "Get your offer", "Clear terms, then you decide")],
             "Start my application", "", BROKER_NOTE)
 

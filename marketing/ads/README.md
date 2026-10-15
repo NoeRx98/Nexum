@@ -30,7 +30,7 @@ replace them with the full-size Unsplash downloads (same filenames) before runni
 No ad uses customer reviews or testimonials.
 
 Wording rule: never quote a lender count ("40+ lenders") or say we "shop" a deal. Nexum matches the
-deal first and sends the file only to the lender that fits.
+deal first and sends the file only to lenders that fit.
 
 The year-end campaign (Y1-Y10) is off for 2026 and its renders were removed; the code stays in
 `src/build_ads.py` for next year, and its copy must be rewritten to the wording rule before reuse.

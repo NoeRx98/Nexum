@@ -333,7 +333,7 @@ footer.ft a{color:#B9C2D3}
 </head>
 <body>
 <a class="skip" href="#apply">Skip to the application</a>
-<div class="strip top"><div class="wrap"><span>Now funding · Equipment financing &amp; business lines of credit for Q4 2026</span><span><a href="#apply">Apply in about 5 minutes →</a></span></div></div>
+<div class="strip top"><div class="wrap"><span>Now funding · Equipment financing &amp; business lines of credit<span id="q4"> for Q4 2026</span></span><span><a href="#apply">Apply in about 5 minutes →</a></span></div></div>
 
 <header class="hero">
 <div class="bg" id="scene" aria-hidden="true"><div class="par"><div class="scene">
@@ -347,7 +347,7 @@ footer.ft a{color:#B9C2D3}
 <div>
 <p class="eyebrow" style="color:var(--sky)">Nexum Commercial Finance · DFW &amp; nationwide</p>
 <h1 id="h1">One application. <span>More ways to fund your business.</span></h1>
-<p class="sub">Get matched with commercial equipment financing and business lines of credit. We pick the right lender for your deal before your information goes anywhere. Fast decisions, straightforward terms, one relationship with Nexum.</p>
+<p class="sub">Get matched with commercial equipment financing and business lines of credit. We match your deal first, then send it only to lenders that fit. Fast decisions, straightforward terms, one relationship with Nexum.</p>
 <ul class="checks"><li>Simple application</li><li>Competitive financing options</li><li>Dedicated support from application to funding</li></ul>
 <div class="ye" id="ye" aria-label="Time left in 2026">
 <p class="ye-k"><i></i>2026 ends in</p>
@@ -415,10 +415,10 @@ footer.ft a{color:#B9C2D3}
 <section class="sec"><div class="wrap">
 <p class="eyebrow rv" style="color:var(--blue)">The problem</p>
 <h2 class="rv" style="margin-top:12px">Business moves fast. Your financing should too.</h2>
-<p class="lede rv">Traditional financing can involve multiple applications, long timelines and limited options. Nexum keeps it simple. We study your business first, then send your file only to the lender that fits your deal best. Your information is not passed around.</p>
+<p class="lede rv">Traditional financing can involve multiple applications, long timelines and limited options. Nexum keeps it simple. We study your business first, then send your file only to lenders that fit your deal. Your information is not passed around.</p>
 <div class="cmp" role="table" aria-label="Your bank compared with Nexum">
 <div class="cmp-h" role="row"><span role="columnheader" class="q"></span><span role="columnheader" class="bk">Your bank</span><span role="columnheader" class="nx">Nexum</span></div>
-<div class="cmp-r" role="row"><span role="rowheader" class="q">Where your information goes</span><span role="cell" class="bk">One bank, one set of rules</span><span role="cell" class="nx">Only to the lender that fits your deal</span></div>
+<div class="cmp-r" role="row"><span role="rowheader" class="q">Where your information goes</span><span role="cell" class="bk">One bank, one set of rules</span><span role="cell" class="nx">Only to lenders that fit your deal</span></div>
 <div class="cmp-r" role="row"><span role="rowheader" class="q">How the lender is chosen</span><span role="cell" class="bk">There is no choice</span><span role="cell" class="nx">We match your deal first, then send it</span></div>
 <div class="cmp-r" role="row"><span role="rowheader" class="q">Who helps you</span><span role="cell" class="bk">Whoever is free</span><span role="cell" class="nx">One advisor, start to finish</span></div>
 <div class="cmp-r" role="row"><span role="rowheader" class="q">What they focus on</span><span role="cell" class="bk">Every kind of lending</span><span role="cell" class="nx">Equipment &amp; business credit only</span></div>
@@ -489,7 +489,7 @@ footer.ft a{color:#B9C2D3}
 <h2>Ready to upgrade your fleet?</h2>
 <p>Don't let financing be the bottleneck. Win more bids, run more efficiently and grow your bottom line. Get your no-obligation options today.</p>
 <a class="btn" href="#apply">See my financing options</a>
-<p class="fine" style="color:#8B95A8;margin-top:18px">One application. We find the lender that fits your deal, then send your file there. Approval and terms are subject to lender underwriting.</p>
+<p class="fine" style="color:#8B95A8;margin-top:18px">One application. We send your file only to lenders that fit your deal. Approval and terms are subject to lender underwriting.</p>
 </div></section>
 
 <footer class="ft"><div class="wrap">
@@ -600,6 +600,9 @@ form.addEventListener("submit",function(e){
 if(!reduce&&"IntersectionObserver"in window){var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");ro.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});
  document.querySelectorAll(".rv").forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add("on");else ro.observe(el)})}
 else document.querySelectorAll(".rv").forEach(function(el){el.classList.add("on")});
+
+/* ---------- "Q4 2026" in the top strip goes away after December 31 ---------- */
+if(new Date()>new Date(2026,11,31,23,59,59))$("q4").hidden=true;
 
 /* ---------- phone: sticky apply button once the form is off screen ---------- */
 var sticky=$("sticky");
