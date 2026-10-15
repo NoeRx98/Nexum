@@ -561,6 +561,9 @@ if(!reduce&&"IntersectionObserver"in window){var ro=new IntersectionObserver(fun
  document.querySelectorAll(".rv").forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add("on");else ro.observe(el)})}
 else document.querySelectorAll(".rv").forEach(function(el){el.classList.add("on")});
 
+/* ---------- year-end links disappear after December 31 ---------- */
+if(new Date()>new Date(2026,11,31,23,59,59))document.querySelectorAll('a[href="/section-179/"]').forEach(function(a){(a.closest('span')||a).hidden=true});
+
 /* ---------- phone: sticky apply button once the form is off screen ---------- */
 var sticky=$("sticky");
 if("IntersectionObserver"in window){var seen={apply:true,final:false};
