@@ -18,11 +18,11 @@ Two campaigns, 10 concepts each, in Meta/Google sizes 1080x1080 (1x1), 1080x1350
 | G7 built for contractors | General | `/` |
 | G8 turned down by your bank? | General | `/` |
 | G9 trucks, trailers, lowboys | General | `/` |
-| G10 Marcus D. testimonial | General | `/` |
+| G10 financing in three steps | General | `/` |
 | Y6 buy it in 2026, put it to work in 2026 | Year-end | `/section-179/` |
 | Y7 hauling more next year (Unsplash) | Year-end | `/section-179/` |
 | Y8 Section 179 has a deadline (Unsplash) | Year-end | `/section-179/` |
-| Y9 Alicia M. testimonial (Unsplash) | Year-end | `/section-179/` |
+| Y9 year-end checklist (Unsplash) | Year-end | `/section-179/` |
 | Y10 lineup, fund it before Dec 31 | Year-end | `/section-179/` |
 
 G1 shows "Rates from 6.99%". Do not run it until a lender program in writing backs that rate for the
@@ -35,3 +35,5 @@ public site by `.vercelignore`.
 Unsplash photos (`src/u-*.jpg`) were picked by the owner from free-licence results. Brand badges,
 licence plates and windshields are blurred. They came in as ~870 px screenshots and were upscaled 2x;
 replace them with the full-size Unsplash downloads (same filenames) before running paid traffic.
+
+No ad uses customer reviews or testimonials.

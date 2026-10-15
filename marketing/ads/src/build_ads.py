@@ -259,31 +259,6 @@ print("built", len(os.listdir(OUT)), "pages")
 
 # ---------------- Round 3: variations to reach 10 per campaign ----------------
 
-def quote_ad(name, size, img, pos, quote, who, btn, small, note, chip=""):
-    css = f"""
-.bg img{{object-position:{pos}}}
-.shade{{background:linear-gradient(180deg,rgba(11,21,48,.9) 0%,rgba(11,21,48,.55) 40%,rgba(11,21,48,.75) 70%,#0B1530 100%)}}
-.q{{margin-top:var(--qt);background:rgba(255,255,255,.96);color:#0F172A;border-radius:24px;padding:40px 42px 34px;box-shadow:0 30px 60px -24px rgba(0,0,0,.7);position:relative}}
-.q::before{{content:"\\201C";position:absolute;top:-34px;left:30px;font-size:150px;line-height:1;font-weight:900;color:#1D4ED8}}
-.q p{{font-size:calc(var(--u)*var(--qs));font-weight:700;line-height:1.3;letter-spacing:-.01em}}
-.q footer{{margin-top:20px;font-size:22px;font-weight:800}}
-.q footer span{{font-weight:600;color:#5B6576}}
-.stars{{color:#F59E0B;font-size:26px;letter-spacing:4px;margin-bottom:12px;display:block}}
-.bottom{{display:grid;gap:20px;margin-top:28px}}
-body.s1_1{{--qt:0px;--qs:40}} body.s4_5{{--qt:0px;--qs:46}} body.s9_16{{--qt:0px;--qs:52}}
-"""
-    chip_html = f'<span class="chip" style="align-self:flex-start;margin-bottom:22px">{chip}</span>' if chip else ""
-    small_html = f"<small>{small}</small>" if small else ""
-    body = f"""<div class="bg"><img src="../{img}"></div><div class="shade"></div>
-{LOGO}
-<div class="spacer"></div>{chip_html}
-<blockquote class="q"><span class="stars">★★★★★</span><p>{quote}</p><footer>{who}</footer></blockquote>
-<div class="spacer"></div>
-<div class="bottom"><div class="cta"><span class="btn">{btn}</span>{small_html}</div><p class="note">{note}</p></div>"""
-    page(name, size, body, css)
-
-QUOTE_NOTE = "Testimonials reflect individual experiences. Individual results vary. " + BROKER_NOTE
-
 def g7(size):
     photo_ad("G7-excavator", size, "excavator.jpg", "50% 70%",
              "Built for contractors, <em>not paperwork.</em>",
@@ -302,11 +277,41 @@ def g9(size):
              "Financing for established hauling businesses. Decisions often in 24–48 hours.",
              "Get matched", "40+ lenders<br>5-minute application", BROKER_NOTE)
 
+def list_ad(name, size, img, pos, chip, h1, items, btn, small, note, h1size=84):
+    """Numbered steps or a checklist over a darkened photo. No testimonials."""
+    css = f"""
+.bg img{{object-position:{pos}}}
+.shade{{background:linear-gradient(180deg,rgba(11,21,48,.94) 0%,rgba(11,21,48,.7) 45%,rgba(11,21,48,.78) 70%,#0B1530 100%)}}
+.head{{margin-top:36px;display:grid;gap:16px}}
+.list{{list-style:none;display:grid;gap:var(--lg);margin-top:var(--lt)}}
+.list li{{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:rgba(11,21,48,.6);box-shadow:inset 0 0 0 1px rgba(157,184,245,.22);border-radius:18px;padding:18px 22px}}
+.list i{{font-style:normal;width:56px;height:56px;border-radius:50%;background:#1D4ED8;display:grid;place-items:center;font-size:26px;font-weight:900}}
+.list li.last i{{background:#F59E0B;color:#0B1530}}
+.list b{{display:block;font-size:30px;font-weight:800;line-height:1.15}}
+.list span{{display:block;font-size:21px;color:#C7D2E8;margin-top:3px}}
+.bottom{{display:grid;gap:20px}}
+body.s1_1{{--lt:26px;--lg:10px}} body.s1_1 .list li{{padding:12px 18px}} body.s1_1 .list i{{width:46px;height:46px;font-size:22px}} body.s1_1 .list b{{font-size:26px}} body.s1_1 .list span{{font-size:18px}}
+body.s4_5{{--lt:40px;--lg:14px}} body.s9_16{{--lt:60px;--lg:18px}}
+"""
+    rows = "".join(f'<li class="{"last" if i == len(items) - 1 else ""}"><i>{m}</i><div><b>{t}</b><span>{d}</span></div></li>'
+                   for i, (m, t, d) in enumerate(items))
+    chip_html = f'<span class="chip">{chip}</span>' if chip else ""
+    small_html = f"<small>{small}</small>" if small else ""
+    body = f"""<div class="bg"><img src="../{img}"></div><div class="shade"></div>
+{LOGO}
+<div class="head">{chip_html}<h1>{h1}</h1></div>
+<ol class="list">{rows}</ol>
+<div class="spacer"></div>
+<div class="bottom"><div class="cta"><span class="btn">{btn}</span>{small_html}</div><p class="note">{note}</p></div>"""
+    page(name, size, body, css, h1=h1size)
+
 def g10(size):
-    quote_ad("G10-testimonial", size, "yard.jpg", "80% 75%",
-             "Our bank wanted three weeks just to look at it. Nexum had an approval to me the next afternoon.",
-             "Marcus D. <span>· Texas · financed a dozer</span>",
-             "See my options", "40+ lenders<br>One application", QUOTE_NOTE)
+    list_ad("G10-three-steps", size, "yard.jpg", "80% 75%", "How it works",
+            "Financing in <em>three steps.</em>",
+            [("1", "Apply in 5 minutes", "One short application, no credit impact to check"),
+             ("2", "We shop 40+ lenders", "Your deal goes to the ones that fit it"),
+             ("3", "Compare your offers", "Side by side, then pick the one that works")],
+            "Start my application", "", BROKER_NOTE)
 
 def y6(size):
     photo_ad("Y6-buy-it-this-year", size, "excavator.jpg", "50% 70%",
@@ -327,10 +332,13 @@ def y8(size):
              "Start my application", "No credit impact<br>to check", TAX_NOTE + " " + BROKER_NOTE, chip="Section 179")
 
 def y9(size):
-    quote_ad("Y9-testimonial", size, "u-cranes.jpg", "45% 40%",
-             "Two trucks and a trailer financed in under a week. This is how it should work.",
-             "Alicia M. <span>· Georgia</span>",
-             "Start before Dec 31", "40+ lenders<br>5-minute application", QUOTE_NOTE, chip="Year-end financing")
+    list_ad("Y9-checklist", size, "u-cranes.jpg", "45% 40%", "Year-end checklist",
+            "Before <em>December&nbsp;31.</em>",
+            [("✓", "Pick the machine", "New or used, the one your jobs need"),
+             ("✓", "Apply with Nexum", "5 minutes, 40+ lenders"),
+             ("✓", "Get funded", "Often days after documents are in"),
+             ("✓", "Put it in service", "On the job before the year closes")],
+            "Start before Dec 31", "Ask your CPA about<br>Section 179", TAX_NOTE + " " + BROKER_NOTE)
 
 def y10(size):  # machine lineup, year-end version
     css = """

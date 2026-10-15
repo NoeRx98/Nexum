@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"><style>
-:root{--W:1080px;--H:1080px;--u:1px;--pad:64px 64px 56px;--logo:84px;--h1:92}
+:root{--W:1080px;--H:1080px;--u:1px;--pad:64px 64px 56px;--logo:84px;--h1:84}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:var(--W);height:var(--H);background:#0B1530}
@@ -21,18 +21,20 @@ h1 em{font-style:normal;color:#9DB8F5}
 .chip{justify-self:start;display:inline-flex;align-items:center;gap:10px;background:#F59E0B;color:#0B1530;font-weight:900;font-size:calc(var(--u)*22);letter-spacing:.12em;text-transform:uppercase;padding:calc(var(--u)*10) calc(var(--u)*18);border-radius:999px}
 
 .bg img{object-position:80% 75%}
-.shade{background:linear-gradient(180deg,rgba(11,21,48,.9) 0%,rgba(11,21,48,.55) 40%,rgba(11,21,48,.75) 70%,#0B1530 100%)}
-.q{margin-top:var(--qt);background:rgba(255,255,255,.96);color:#0F172A;border-radius:24px;padding:40px 42px 34px;box-shadow:0 30px 60px -24px rgba(0,0,0,.7);position:relative}
-.q::before{content:"\201C";position:absolute;top:-34px;left:30px;font-size:150px;line-height:1;font-weight:900;color:#1D4ED8}
-.q p{font-size:calc(var(--u)*var(--qs));font-weight:700;line-height:1.3;letter-spacing:-.01em}
-.q footer{margin-top:20px;font-size:22px;font-weight:800}
-.q footer span{font-weight:600;color:#5B6576}
-.stars{color:#F59E0B;font-size:26px;letter-spacing:4px;margin-bottom:12px;display:block}
-.bottom{display:grid;gap:20px;margin-top:28px}
-body.s1_1{--qt:0px;--qs:40} body.s4_5{--qt:0px;--qs:46} body.s9_16{--qt:0px;--qs:52}
+.shade{background:linear-gradient(180deg,rgba(11,21,48,.94) 0%,rgba(11,21,48,.7) 45%,rgba(11,21,48,.78) 70%,#0B1530 100%)}
+.head{margin-top:36px;display:grid;gap:16px}
+.list{list-style:none;display:grid;gap:var(--lg);margin-top:var(--lt)}
+.list li{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:rgba(11,21,48,.6);box-shadow:inset 0 0 0 1px rgba(157,184,245,.22);border-radius:18px;padding:18px 22px}
+.list i{font-style:normal;width:56px;height:56px;border-radius:50%;background:#1D4ED8;display:grid;place-items:center;font-size:26px;font-weight:900}
+.list li.last i{background:#F59E0B;color:#0B1530}
+.list b{display:block;font-size:30px;font-weight:800;line-height:1.15}
+.list span{display:block;font-size:21px;color:#C7D2E8;margin-top:3px}
+.bottom{display:grid;gap:20px}
+body.s1_1{--lt:26px;--lg:10px} body.s1_1 .list li{padding:12px 18px} body.s1_1 .list i{width:46px;height:46px;font-size:22px} body.s1_1 .list b{font-size:26px} body.s1_1 .list span{font-size:18px}
+body.s4_5{--lt:40px;--lg:14px} body.s9_16{--lt:60px;--lg:18px}
 </style></head><body class="s1_1"><div class="ad"><div class="bg"><img src="../yard.jpg"></div><div class="shade"></div>
 <img class="logo" src="../logo.png" alt="Nexum Commercial Finance">
+<div class="head"><span class="chip">How it works</span><h1>Financing in <em>three steps.</em></h1></div>
+<ol class="list"><li class=""><i>1</i><div><b>Apply in 5 minutes</b><span>One short application, no credit impact to check</span></div></li><li class=""><i>2</i><div><b>We shop 40+ lenders</b><span>Your deal goes to the ones that fit it</span></div></li><li class="last"><i>3</i><div><b>Compare your offers</b><span>Side by side, then pick the one that works</span></div></li></ol>
 <div class="spacer"></div>
-<blockquote class="q"><span class="stars">★★★★★</span><p>Our bank wanted three weeks just to look at it. Nexum had an approval to me the next afternoon.</p><footer>Marcus D. <span>· Texas · financed a dozer</span></footer></blockquote>
-<div class="spacer"></div>
-<div class="bottom"><div class="cta"><span class="btn">See my options</span><small>40+ lenders<br>One application</small></div><p class="note">Testimonials reflect individual experiences. Individual results vary. Nexum Commercial Finance is a broker, not a lender. Financing subject to lender approval.</p></div></div></body></html>
+<div class="bottom"><div class="cta"><span class="btn">Start my application</span></div><p class="note">Nexum Commercial Finance is a broker, not a lender. Financing subject to lender approval.</p></div></div></body></html>
