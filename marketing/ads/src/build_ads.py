@@ -68,35 +68,33 @@ body.s1_1 .bg img{object-position:30% 120%}
 """
     body = f"""<div class="bg"><img src="../excavator.jpg"></div><div class="shade"></div>
 {LOGO}
-<div class="head"><h1>Finance your <em>next machine.</em></h1><p class="sub">One application. 40+ lenders. Decisions often in 24–48 hours.</p></div>
+<div class="head"><h1>Finance your <em>next machine.</em></h1><p class="sub">One application, matched to the right lender. Decisions often in 24–48 hours.</p></div>
 <div class="pill"><small>Rates from</small><b>6.99%<sup>*</sup></b><span>for qualified buyers</span></div>
 <div class="spacer"></div>
 <div class="bottom"><div class="cta"><span class="btn">Check my rate</span><small>No credit impact<br>to check your options</small></div><p class="note">{RATE_NOTE}</p></div>"""
     page("G1-rate", size, body, css, h1=96)
 
-def g2(size):  # 1 vs 40+
+def g2(size):  # matched first, then sent: the precision message
     css = """
 .bg img{object-position:78% 70%;filter:saturate(1.05)}
 .shade{background:linear-gradient(180deg,rgba(11,21,48,.95) 0%,rgba(11,21,48,.82) 45%,rgba(11,21,48,.35) 75%,rgba(11,21,48,.85) 100%)}
 .head{margin-top:44px;display:grid;gap:18px}
-.vs{display:grid;grid-template-columns:auto auto;gap:36px;align-items:end;margin-top:var(--vt)}
-.vs div{display:grid;gap:6px}
-.vs small{font-size:24px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-.vs .bank b{font-size:150px;font-weight:900;line-height:.9;color:rgba(255,255,255,.35)}
-.vs .bank small{color:#93A3C4}
-.vs .nx b{font-size:230px;font-weight:900;line-height:.85;letter-spacing:-.05em;color:#fff;text-shadow:0 0 60px rgba(59,130,246,.55)}
-.vs .nx small{color:#9DB8F5}
+.vs{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;margin-top:var(--vt)}
+.vs svg{width:var(--tg);height:var(--tg);filter:drop-shadow(0 0 40px rgba(59,130,246,.5))}
+.vs b{display:block;font-size:64px;font-weight:900;line-height:1.02;letter-spacing:-.02em}
+.vs b+b{color:#F59E0B}
+.vs small{display:block;margin-top:14px;font-size:26px;font-weight:600;color:#C7D2E8;line-height:1.3}
 .bottom{display:grid;gap:20px}
-body.s1_1{--vt:40px} body.s4_5{--vt:70px} body.s9_16{--vt:120px}
-body.s1_1 .vs .nx b{font-size:200px} body.s1_1 .vs .bank b{font-size:130px}
+body.s1_1{--vt:36px;--tg:230px} body.s4_5{--vt:70px;--tg:280px} body.s9_16{--vt:120px;--tg:300px}
+body.s1_1 .vs b{font-size:56px}
 """
     body = f"""<div class="bg"><img src="../yard.jpg"></div><div class="shade"></div>
 {LOGO}
-<div class="head"><h1>Your bank is one lender.<br><em>We bring you 40+.</em></h1></div>
-<div class="vs"><div class="bank"><b>1</b><small>Your bank</small></div><div class="nx"><b>40+</b><small>Nexum lenders</small></div></div>
+<div class="head"><h1>We don't send your deal everywhere.<br><em>We send it where it fits.</em></h1></div>
+<div class="vs"><svg viewBox="0 0 200 200" fill="none" aria-hidden="true"><circle cx="100" cy="100" r="92" stroke="#9DB8F5" stroke-opacity=".45" stroke-width="4"/><circle cx="100" cy="100" r="62" stroke="#9DB8F5" stroke-opacity=".7" stroke-width="4"/><circle cx="100" cy="100" r="32" stroke="#fff" stroke-width="5"/><path d="M100 0v52M100 148v52M0 100h52M148 100h52" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="100" r="12" fill="#F59E0B"/></svg><div><b>Matched first.</b><b>Then sent.</b><small>Your file goes only to the lender<br>that fits your deal.</small></div></div>
 <div class="spacer"></div>
-<div class="bottom"><div class="cta"><span class="btn">See my options</span><small>One 5-minute application<br>Offers side by side</small></div><p class="note">{BROKER_NOTE}</p></div>"""
-    page("G2-40-lenders", size, body, css, h1=84)
+<div class="bottom"><div class="cta"><span class="btn">See my options</span><small>One 5-minute application<br>No credit impact to check</small></div><p class="note">{BROKER_NOTE}</p></div>"""
+    page("G2-right-lender", size, body, css, h1=80)
 
 def g3(size):  # machine lineup
     css = """
@@ -117,10 +115,12 @@ body.s9_16 .grid{gap:18px}
 <div class="head"><h1>New or used.<br><em>We finance the iron.</em></h1><p class="sub">Excavators, dozers, loaders, trucks and trailers for established businesses.</p></div>
 <div class="grid">{tiles}</div>
 <div class="spacer"></div>
-<div class="bottom"><div class="cta"><span class="btn">Get matched</span><small>40+ lenders · decisions<br>often in 24–48 hrs</small></div><p class="note">{BROKER_NOTE}</p></div>"""
+<div class="bottom"><div class="cta"><span class="btn">Get matched</span><small>Matched to the right lender<br>Decisions often in 24–48 hrs</small></div><p class="note">{BROKER_NOTE}</p></div>"""
     page("G3-lineup", size, body, css, h1=80)
 
 # ---------------- Year-end campaign ----------------
+# OFF for 2026: the owner is running only the general campaign this year. The y* functions are kept
+# for next year but are not built. Their copy still says "40+ lenders"; rewrite it before reuse.
 
 def y1(size):  # December calendar, 31 circled
     css = """
@@ -189,7 +189,7 @@ body.s1_1 .bg img{object-position:50% 140%}
 <div class="bottom"><div class="cta"><span class="btn">Get matched before Dec 31</span></div><p class="note">{TAX_NOTE} {BROKER_NOTE}</p></div>"""
     page("Y3-section-179", size, body, css, h1=80)
 
-for fn in (g1, g2, g3, y1, y2, y3):
+for fn in (g1, g2, g3):
     for s in SIZES:
         fn(s)
 print("built", len(os.listdir(OUT)), "pages")
@@ -224,19 +224,19 @@ body.s1_1{{--bh:640px}} body.s4_5{{--bh:820px}} body.s9_16{{--bh:1180px}}
 def g4(size):
     photo_ad("G4-haul-truck", size, "u-haul-truck.jpg", "50% 55%",
              "Bigger jobs need <em>bigger iron.</em>",
-             "Finance new or used equipment through 40+ lenders. Decisions often in 24–48 hours.",
+             "Finance new or used equipment. We match your deal to the right lender. Decisions often in 24–48 hours.",
              "See my options", "No credit impact<br>to check", BROKER_NOTE)
 
 def g5(size):
     photo_ad("G5-semi", size, "u-semi.jpg", "60% 60%",
              "Your next truck, <em>financed.</em>",
-             "Trucks and trailers for established businesses. One application, 40+ lenders.",
+             "Trucks and trailers for established businesses. One application, sent only to the lender that fits.",
              "Get matched", "5-minute<br>application", BROKER_NOTE)
 
 def g6(size):
     photo_ad("G6-dozer", size, "u-dozer.jpg", "55% 55%",
              "Keep your cash. <em>Finance the dozer.</em>",
-             "No-money-down options for qualified borrowers. Compare offers side by side.",
+             "No-money-down options for qualified borrowers. Keep your cash for the job.",
              "Check my options", "No credit impact<br>to check", BROKER_NOTE)
 
 def y4(size):
@@ -252,7 +252,7 @@ def y5(size):
              "Trucks financed and put in service by December 31 may qualify for Section 179. Ask your CPA.",
              "Get matched before Dec 31", "", TAX_NOTE + " " + BROKER_NOTE, chip="Fleet upgrade")
 
-for fn in (g4, g5, g6, y4, y5):
+for fn in (g4, g5, g6):
     for s in SIZES:
         fn(s)
 print("built", len(os.listdir(OUT)), "pages")
@@ -262,20 +262,20 @@ print("built", len(os.listdir(OUT)), "pages")
 def g7(size):
     photo_ad("G7-excavator", size, "excavator.jpg", "50% 70%",
              "Built for contractors, <em>not paperwork.</em>",
-             "One 5-minute application reaches 40+ lenders. No credit impact to check your options.",
+             "One 5-minute application, matched to the right lender. No credit impact to check your options.",
              "See my options", "", BROKER_NOTE)
 
 def g8(size):
     photo_ad("G8-bank-said-no", size, "wheel-loader.jpg", "50% 70%",
              "Turned down <em>by your bank?</em>",
-             "Your bank is one opinion. We take your deal to 40+ lenders and show you the offers side by side.",
+             "Your bank is one opinion. We know which lender fits your deal and send it straight there.",
              "Get a second look", "No credit impact<br>to check", BROKER_NOTE)
 
 def g9(size):
     photo_ad("G9-truck-trailer", size, "truck-trailer.jpg", "45% 70%",
              "Trucks. Trailers. <em>Lowboys.</em>",
              "Financing for established hauling businesses. Decisions often in 24–48 hours.",
-             "Get matched", "40+ lenders<br>5-minute application", BROKER_NOTE)
+             "Get matched", "Matched to the<br>right lender", BROKER_NOTE)
 
 def list_ad(name, size, img, pos, chip, h1, items, btn, small, note, h1size=84):
     """Numbered steps or a checklist over a darkened photo. No testimonials."""
@@ -309,8 +309,8 @@ def g10(size):
     list_ad("G10-three-steps", size, "yard.jpg", "80% 75%", "How it works",
             "Financing in <em>three steps.</em>",
             [("1", "Apply in 5 minutes", "One short application, no credit impact to check"),
-             ("2", "We shop 40+ lenders", "Your deal goes to the ones that fit it"),
-             ("3", "Compare your offers", "Side by side, then pick the one that works")],
+             ("2", "We pick the right lender", "Your file goes only where it fits"),
+             ("3", "Get your offer", "Clear terms, then you decide")],
             "Start my application", "", BROKER_NOTE)
 
 def y6(size):
@@ -362,7 +362,7 @@ body.s4_5{--gt:32px} body.s4_5 .grid img{aspect-ratio:16/10} body.s9_16{--gt:56p
 <div class="bottom"><div class="cta"><span class="btn">Get matched</span><small>40+ lenders · decisions<br>often in 24–48 hrs</small></div><p class="note">{TAX_NOTE} {BROKER_NOTE}</p></div>"""
     page("Y10-lineup", size, body, css, h1=76)
 
-for fn in (g7, g8, g9, g10, y6, y7, y8, y9, y10):
+for fn in (g7, g8, g9, g10):
     for s in SIZES:
         fn(s)
 print("built", len(os.listdir(OUT)), "pages")

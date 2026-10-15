@@ -1,29 +1,20 @@
 # Nexum ad concepts
 
-Two campaigns, 10 concepts each, in Meta/Google sizes 1080x1080 (1x1), 1080x1350 (4x5) and 1080x1920 (9x16, story-safe).
+One campaign for 2026: general ads that send people to the homepage. 10 concepts in Meta/Google sizes
+1080x1080 (1x1), 1080x1350 (4x5) and 1080x1920 (9x16, story-safe).
 
-| Concept | Campaign | Landing page |
-|---|---|---|
-| G1 rate pill | General | `/` |
-| G2 1 lender vs 40+ | General | `/` |
-| G3 machine lineup | General | `/` |
-| Y1 December calendar | Year-end | `/section-179/` |
-| Y2 path to Dec 31 | Year-end | `/section-179/` |
-| Y3 Section 179 hook | Year-end | `/section-179/` |
-| G4 haul truck (Unsplash) | General | `/` |
-| G5 semi (Unsplash) | General | `/` |
-| G6 dozer, keep your cash (Unsplash) | General | `/` |
-| Y4 cranes at dusk (Unsplash) | Year-end | `/section-179/` |
-| Y5 fleet trucks (Unsplash) | Year-end | `/section-179/` |
-| G7 built for contractors | General | `/` |
-| G8 turned down by your bank? | General | `/` |
-| G9 trucks, trailers, lowboys | General | `/` |
-| G10 financing in three steps | General | `/` |
-| Y6 buy it in 2026, put it to work in 2026 | Year-end | `/section-179/` |
-| Y7 hauling more next year (Unsplash) | Year-end | `/section-179/` |
-| Y8 Section 179 has a deadline (Unsplash) | Year-end | `/section-179/` |
-| Y9 year-end checklist (Unsplash) | Year-end | `/section-179/` |
-| Y10 lineup, fund it before Dec 31 | Year-end | `/section-179/` |
+| Concept | Landing page |
+|---|---|
+| G1 rate pill | `/` |
+| G2 matched first, then sent (precision) | `/` |
+| G3 machine lineup | `/` |
+| G4 haul truck (Unsplash) | `/` |
+| G5 semi (Unsplash) | `/` |
+| G6 dozer, keep your cash (Unsplash) | `/` |
+| G7 built for contractors | `/` |
+| G8 turned down by your bank? | `/` |
+| G9 trucks, trailers, lowboys | `/` |
+| G10 financing in three steps | `/` |
 
 G1 shows "Rates from 6.99%". Do not run it until a lender program in writing backs that rate for the
 stated buyer profile. The disclosure on the ad must match that program.
@@ -37,3 +28,9 @@ licence plates and windshields are blurred. They came in as ~870 px screenshots 
 replace them with the full-size Unsplash downloads (same filenames) before running paid traffic.
 
 No ad uses customer reviews or testimonials.
+
+Wording rule: never quote a lender count ("40+ lenders") or say we "shop" a deal. Nexum matches the
+deal first and sends the file only to the lender that fits.
+
+The year-end campaign (Y1-Y10) is off for 2026 and its renders were removed; the code stays in
+`src/build_ads.py` for next year, and its copy must be rewritten to the wording rule before reuse.

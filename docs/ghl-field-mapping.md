@@ -1,6 +1,6 @@
 # GHL field mapping for Nexum lead forms
 
-Both forms post JSON to `/api/lead`, which relays it to the GHL inbound webhook (`GHL_WEBHOOK_URL`).
+The homepage form posts JSON to `/api/lead`, which relays it to the GHL inbound webhook (`GHL_WEBHOOK_URL`).
 GHL keeps only the fields the workflow maps; anything unmapped is dropped without an error.
 
 Create each new field under **Settings → Custom Fields** as single-line text, then map it in the
@@ -8,20 +8,21 @@ workflow's **Create/Update Contact** action as `{{inboundWebhookRequest.<field>}
 in the trigger only after GHL receives a request containing them: submit one test lead, then use
 **Fetch sample request** on the Inbound Webhook trigger.
 
-## Sent by both forms
+## Sent by the form
 
-Both pages send exactly the same keys and option values. The year-end page shows shorter chip labels
-(for example `$20K+`), but the value sent is the full original text (`$20K+ / month`).
+The form shows shorter chip labels (for example `$20K+`), but the value sent is the full original
+text (`$20K+ / month`). The year-end page (`/section-179/`) was taken down for 2026 and redirects to
+the homepage; it can be restored from git history next year.
 
 | Field | Values / example | Notes |
 |---|---|---|
 | `funnel` | `Nexum Commercial Finance` | Unchanged on every form, so existing triggers and filters keep working |
-| `lead_page` | `main`, `section-179` | **New.** Which page sent the lead; use it to tag or route |
+| `lead_page` | `main` | Which page sent the lead (only `main` while the year-end page is off) |
 | `first_name`, `last_name`, `full_name`, `email`, `phone` | | Standard contact fields |
 | `years_in_business` | `1 year+` … `10 years+` | |
 | `monthly_revenue` | `$5K+ / month` … `$20K+ / month` | |
 | `credit_score` | `Under 600` … `750+` | |
-| `equipment_needed` | `Commercial equipment financing`, `Business line of credit` | Same two values on both pages |
+| `equipment_needed` | `Commercial equipment financing`, `Business line of credit` | Unchanged from the original form |
 | `sms_consent` | `yes` / `no` | **Only text contacts where this is `yes`** |
 | `sms_consent_text` | exact opt-in wording, empty when `no` | Proof of what the person agreed to |
 | `submitted_at` | `10/14/26, 4:01:47 PM CT` | Central time |
@@ -40,5 +41,4 @@ Both pages send exactly the same keys and option values. The year-end page shows
 2. Do not send any SMS until A2P 10DLC registration is approved (Settings → Phone Numbers → Trust Center).
    Registration needs the privacy policy URL (with a section saying phone numbers and SMS consent are not
    shared or sold for marketing), the opt-in wording above, and the page URLs where it appears.
-3. If the opt-in wording changes, change it in both `index.html` (`SMS_TEXT`) and `section-179/index.html`
-   (`#smsText`) and update the A2P registration to match.
+3. If the opt-in wording changes, change it in `index.html` (`#smsText`) and update the A2P registration to match.

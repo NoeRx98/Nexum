@@ -1,6 +1,12 @@
 [build]
   publish = "."
 
+# year-end page is off for 2026; temporary so it can come back next year
+[[redirects]]
+  from = "/section-179/*"
+  to = "/"
+  status = 302
+
 [[headers]]
   for = "/*"
   [headers.values]
