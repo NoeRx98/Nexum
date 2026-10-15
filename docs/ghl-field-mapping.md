@@ -18,6 +18,7 @@ the homepage; it can be restored from git history next year.
 |---|---|---|
 | `funnel` | `Nexum Commercial Finance` | Unchanged on every form, so existing triggers and filters keep working |
 | `lead_page` | `main` | Which page sent the lead (only `main` while the year-end page is off) |
+| `language` | `en`, `es` | **New.** `es` = came from the Spanish page (`/es/`). Route these to the Spanish-speaking advisor and send Spanish texts |
 | `first_name`, `last_name`, `full_name`, `email`, `phone` | | Standard contact fields |
 | `years_in_business` | `1 year+` … `10 years+` | |
 | `monthly_revenue` | `$5K+ / month` … `$20K+ / month` | |
@@ -41,4 +42,6 @@ the homepage; it can be restored from git history next year.
 2. Do not send any SMS until A2P 10DLC registration is approved (Settings → Phone Numbers → Trust Center).
    Registration needs the privacy policy URL (with a section saying phone numbers and SMS consent are not
    shared or sold for marketing), the opt-in wording above, and the page URLs where it appears.
-3. If the opt-in wording changes, change it in `index.html` (`#smsText`) and update the A2P registration to match.
+3. The Spanish page (`/es/`) shows a Spanish opt-in, and `sms_consent_text` carries that Spanish text.
+   Add the Spanish wording and the `/es/` URL to the A2P registration before texting Spanish leads.
+4. If the opt-in wording changes, change it in `index.html` (`#smsText`) and in the Spanish build and update the A2P registration to match.

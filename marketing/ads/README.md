@@ -20,8 +20,8 @@ One campaign for 2026: general ads that send people to the homepage. 14 concepts
 | G13 won the bid? get the machine | `/?ad=won-the-bid` |
 | G14 found it at auction? we can finance it | `/?ad=private-sale` |
 
-G1 shows "Rates from 6.99%". Do not run it until a lender program in writing backs that rate for the
-stated buyer profile. The disclosure on the ad must match that program.
+G1 shows "Rates from 6.99%". The owner confirmed the rate with a lender on 2026-10-15; keep that written
+program on file, and pull the ad if the program changes. The disclosure on the ad must match it.
 
 Rebuild: `python3 src/build_ads.py`, then render with `src/render.mjs` (Playwright; serve the repo over
 http and pass `ADS_URL` so Montserrat loads). Output lands in `out/`. This folder is excluded from the

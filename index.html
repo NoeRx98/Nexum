@@ -6,6 +6,9 @@
 <title>Nexum Commercial Finance | DFW & Nationwide Equipment Financing</title>
 <meta name="description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions often in 24–48 hours, no obligation.">
 <link rel="canonical" href="https://nexumcf.com/">
+<link rel="alternate" hreflang="en" href="https://nexumcf.com/">
+<link rel="alternate" hreflang="es" href="https://nexumcf.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://nexumcf.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nexum Commercial Finance">
 <meta property="og:title" content="Nexum Commercial Finance | DFW & Nationwide Equipment Financing">
@@ -336,6 +339,11 @@ footer.ft a{color:#B9C2D3}
 .proof .s:nth-child(3n+1){border-left:0;padding-left:0}
 .proof .s:nth-child(n+4){border-top:1px solid rgba(255,255,255,.1)}
 @media (max-width:600px){.proof .wrap{grid-template-columns:1fr 1fr}.proof .s{border-left:1px solid rgba(255,255,255,.1);padding-left:14px;border-top:0}.proof .s:nth-child(odd){border-left:0;padding-left:0}.proof .s:nth-child(n+3){border-top:1px solid rgba(255,255,255,.1)}.proof b{font-size:20px}}
+
+/* language switch: always visible, phones included */
+.nav .links a.lang:not(.btn){display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(157,184,245,.45);color:#fff;font-size:13px;font-weight:700}
+.nav .links a.lang:not(.btn):hover{box-shadow:inset 0 0 0 1.5px #fff}
+@media (max-width:960px){.nav .links{gap:10px}}
 </style>
 </head>
 <body>
@@ -349,7 +357,7 @@ footer.ft a{color:#B9C2D3}
 <span class="motes"><i style="--x:82%;--d:0s;--t:7s"></i><i style="--x:84%;--d:-2s;--t:9s"></i><i style="--x:86%;--d:-4s;--t:8s"></i><i style="--x:81%;--d:-5.5s;--t:10s"></i><i style="--x:85%;--d:-1s;--t:11s"></i><i style="--x:87.5%;--d:-6s;--t:7.5s"></i><i style="--x:83%;--d:-3.5s;--t:9.5s"></i><i style="--x:88.5%;--d:-7s;--t:8.5s"></i></span>
 </div></div></div>
 <div class="wrap">
-<div class="nav"><a href="/"><img src="/uploads/nexum-logo-sm.png" width="560" height="144" alt="Nexum Commercial Finance"></a><div class="links"><a href="#advantage">Advantage</a><a href="#process">Process</a><a href="#faq">FAQ</a><a class="btn" href="#apply"><span class="lg">See my options</span><span class="sm">Apply now</span></a></div></div>
+<div class="nav"><a href="/"><img src="/uploads/nexum-logo-sm.png" width="560" height="144" alt="Nexum Commercial Finance"></a><div class="links"><a href="#advantage">Advantage</a><a href="#process">Process</a><a href="#faq">FAQ</a><a class="lang" href="/es/" hreflang="es" lang="es">Español</a><a class="btn" href="#apply"><span class="lg">See my options</span><span class="sm">Apply now</span></a></div></div>
 <div class="hgrid">
 <div>
 <p class="eyebrow" style="color:var(--sky)">Nexum Commercial Finance · DFW &amp; nationwide</p>
@@ -597,7 +605,7 @@ form.addEventListener("submit",function(e){
  e.preventDefault();if(!valid(3))return;
  var btn=$("submit");btn.disabled=true;btn.textContent="Sending…";
  var first=$("first").value.trim(),last=$("last").value.trim();
- var lead={funnel:"Nexum Commercial Finance",lead_page:"main",first_name:first,last_name:last,full_name:(first+" "+last).trim(),
+ var lead={funnel:"Nexum Commercial Finance",lead_page:"main",language:"en",first_name:first,last_name:last,full_name:(first+" "+last).trim(),
   email:$("email").value.trim(),phone:$("phone").value.trim(),
   years_in_business:pickVal("years"),monthly_revenue:pickVal("revenue"),credit_score:pickVal("credit"),
   equipment_needed:pickVal("need"),
