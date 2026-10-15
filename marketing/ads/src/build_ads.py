@@ -256,3 +256,105 @@ for fn in (g4, g5, g6, y4, y5):
     for s in SIZES:
         fn(s)
 print("built", len(os.listdir(OUT)), "pages")
+
+# ---------------- Round 3: variations to reach 10 per campaign ----------------
+
+def quote_ad(name, size, img, pos, quote, who, btn, small, note, chip=""):
+    css = f"""
+.bg img{{object-position:{pos}}}
+.shade{{background:linear-gradient(180deg,rgba(11,21,48,.9) 0%,rgba(11,21,48,.55) 40%,rgba(11,21,48,.75) 70%,#0B1530 100%)}}
+.q{{margin-top:var(--qt);background:rgba(255,255,255,.96);color:#0F172A;border-radius:24px;padding:40px 42px 34px;box-shadow:0 30px 60px -24px rgba(0,0,0,.7);position:relative}}
+.q::before{{content:"\\201C";position:absolute;top:-34px;left:30px;font-size:150px;line-height:1;font-weight:900;color:#1D4ED8}}
+.q p{{font-size:calc(var(--u)*var(--qs));font-weight:700;line-height:1.3;letter-spacing:-.01em}}
+.q footer{{margin-top:20px;font-size:22px;font-weight:800}}
+.q footer span{{font-weight:600;color:#5B6576}}
+.stars{{color:#F59E0B;font-size:26px;letter-spacing:4px;margin-bottom:12px;display:block}}
+.bottom{{display:grid;gap:20px;margin-top:28px}}
+body.s1_1{{--qt:0px;--qs:40}} body.s4_5{{--qt:0px;--qs:46}} body.s9_16{{--qt:0px;--qs:52}}
+"""
+    chip_html = f'<span class="chip" style="align-self:flex-start;margin-bottom:22px">{chip}</span>' if chip else ""
+    small_html = f"<small>{small}</small>" if small else ""
+    body = f"""<div class="bg"><img src="../{img}"></div><div class="shade"></div>
+{LOGO}
+<div class="spacer"></div>{chip_html}
+<blockquote class="q"><span class="stars">★★★★★</span><p>{quote}</p><footer>{who}</footer></blockquote>
+<div class="spacer"></div>
+<div class="bottom"><div class="cta"><span class="btn">{btn}</span>{small_html}</div><p class="note">{note}</p></div>"""
+    page(name, size, body, css)
+
+QUOTE_NOTE = "Testimonials reflect individual experiences. Individual results vary. " + BROKER_NOTE
+
+def g7(size):
+    photo_ad("G7-excavator", size, "excavator.jpg", "50% 70%",
+             "Built for contractors, <em>not paperwork.</em>",
+             "One 5-minute application reaches 40+ lenders. No credit impact to check your options.",
+             "See my options", "", BROKER_NOTE)
+
+def g8(size):
+    photo_ad("G8-bank-said-no", size, "wheel-loader.jpg", "50% 70%",
+             "Turned down <em>by your bank?</em>",
+             "Your bank is one opinion. We take your deal to 40+ lenders and show you the offers side by side.",
+             "Get a second look", "No credit impact<br>to check", BROKER_NOTE)
+
+def g9(size):
+    photo_ad("G9-truck-trailer", size, "truck-trailer.jpg", "45% 70%",
+             "Trucks. Trailers. <em>Lowboys.</em>",
+             "Financing for established hauling businesses. Decisions often in 24–48 hours.",
+             "Get matched", "40+ lenders<br>5-minute application", BROKER_NOTE)
+
+def g10(size):
+    quote_ad("G10-testimonial", size, "yard.jpg", "80% 75%",
+             "Our bank wanted three weeks just to look at it. Nexum had an approval to me the next afternoon.",
+             "Marcus D. <span>· Texas · financed a dozer</span>",
+             "See my options", "40+ lenders<br>One application", QUOTE_NOTE)
+
+def y6(size):
+    photo_ad("Y6-buy-it-this-year", size, "excavator.jpg", "50% 70%",
+             "Buy it in 2026. <em>Put it to work in 2026.</em>",
+             "Year-end equipment financing through 40+ lenders. Decisions often in 24–48 hours.",
+             "Start before Dec 31", "", TAX_NOTE + " " + BROKER_NOTE, chip="Before Dec 31")
+
+def y7(size):
+    photo_ad("Y7-hauling-next-year", size, "u-semi.jpg", "60% 60%",
+             "Hauling more next year? <em>Finance the truck this year.</em>",
+             "Trucks financed and put in service by December 31 may qualify for Section 179. Ask your CPA.",
+             "Get matched before Dec 31", "", TAX_NOTE + " " + BROKER_NOTE, chip="Year-end financing", h1size=80)
+
+def y8(size):
+    photo_ad("Y8-179-deadline", size, "u-dozer.jpg", "55% 55%",
+             "Section 179 has a deadline. <em>December&nbsp;31.</em>",
+             "Finance the equipment now. Ask your CPA what it could mean for this year's taxes.",
+             "Start my application", "No credit impact<br>to check", TAX_NOTE + " " + BROKER_NOTE, chip="Section 179")
+
+def y9(size):
+    quote_ad("Y9-testimonial", size, "u-cranes.jpg", "45% 40%",
+             "Two trucks and a trailer financed in under a week. This is how it should work.",
+             "Alicia M. <span>· Georgia</span>",
+             "Start before Dec 31", "40+ lenders<br>5-minute application", QUOTE_NOTE, chip="Year-end financing")
+
+def y10(size):  # machine lineup, year-end version
+    css = """
+.ad{background:radial-gradient(120% 80% at 80% 0%,#1E3A8A 0%,#0F1E45 45%,#0B1530 100%)}
+.head{margin-top:36px;display:grid;gap:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:var(--gt)}
+.grid figure{position:relative;border-radius:18px;overflow:hidden;background:#0F172A;box-shadow:0 0 0 1px rgba(157,184,245,.18)}
+.grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.grid figcaption{position:absolute;left:12px;bottom:12px;background:rgba(11,18,34,.8);padding:6px 14px;border-radius:999px;font-size:20px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#C9D6F2}
+.grid figure.hot{box-shadow:0 0 0 3px #F59E0B}
+.bottom{display:grid;gap:20px}
+body.s1_1{--gt:26px} body.s1_1 .grid{grid-template-columns:repeat(4,1fr)} body.s1_1 .grid img{aspect-ratio:3/4} body.s1_1 .grid figcaption{font-size:16px;left:8px;bottom:8px;padding:5px 10px}
+body.s4_5{--gt:32px} body.s4_5 .grid img{aspect-ratio:16/10} body.s9_16{--gt:56px}
+"""
+    tiles = "".join(f'<figure><img src="../{f}.jpg"><figcaption>{c}</figcaption></figure>' for f, c in
+                    [("excavator", "Excavators"), ("dozer", "Dozers"), ("wheel-loader", "Loaders"), ("dump-truck", "Trucks")])
+    body = f"""{LOGO}
+<div class="head"><span class="chip">Year-end financing</span><h1>Whatever you're buying, <em>fund it before Dec&nbsp;31.</em></h1></div>
+<div class="grid">{tiles}</div>
+<div class="spacer"></div>
+<div class="bottom"><div class="cta"><span class="btn">Get matched</span><small>40+ lenders · decisions<br>often in 24–48 hrs</small></div><p class="note">{TAX_NOTE} {BROKER_NOTE}</p></div>"""
+    page("Y10-lineup", size, body, css, h1=76)
+
+for fn in (g7, g8, g9, g10, y6, y7, y8, y9, y10):
+    for s in SIZES:
+        fn(s)
+print("built", len(os.listdir(OUT)), "pages")
