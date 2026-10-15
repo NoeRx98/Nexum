@@ -13,7 +13,8 @@
 <meta property="og:url" content="https://nexumcf.com/section-179/">
 <meta property="og:image" content="https://nexumcf.com/uploads/nexum-share.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" type="image/webp" href="/uploads/nightshift-hero.webp" imagesrcset="/uploads/nightshift-hero-800.webp 800w, /uploads/nightshift-hero.webp 1344w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" media="(min-width:961px)" imagesrcset="/uploads/nightshift-yard-1280.webp 1280w, /uploads/nightshift-yard-2000.webp 2000w" imagesizes="120vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" media="(max-width:960px)" imagesrcset="/uploads/nightshift-hero-800.webp 800w, /uploads/nightshift-hero.webp 1344w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -54,8 +55,8 @@ h1,h2,h3{line-height:1.06;letter-spacing:-.025em;text-wrap:balance}
 .lt{left:var(--x);top:var(--y);width:3.2%;height:5.7%;margin:-2.85% 0 0 -1.6%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,248,225,.95),rgba(255,226,160,.35) 45%,rgba(255,226,160,0));mix-blend-mode:screen;animation:breathe 4.6s ease-in-out infinite;animation-delay:var(--d,0s)}
 .lt.sm{width:2%;height:3.6%;margin:-1.8% 0 0 -1%}
 .red{left:var(--x);top:var(--y);width:1.1%;height:2%;margin:-1% 0 0 -.55%;border-radius:50%;background:radial-gradient(closest-side,#ff5a4f,rgba(255,60,50,.45) 50%,rgba(255,60,50,0));opacity:0;animation:blink 2.6s steps(1,end) infinite;animation-delay:var(--d,0s)}
-.pool{left:47%;top:58%;width:36%;height:24%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,226,170,.30),rgba(255,226,170,.10) 55%,rgba(255,226,170,0));mix-blend-mode:screen;animation:sweep 16s ease-in-out infinite alternate}
-.motes{position:absolute;left:0;top:44%;width:100%;height:18%}
+.pool{left:60%;top:80%;width:30%;height:16%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,226,170,.30),rgba(255,226,170,.10) 55%,rgba(255,226,170,0));mix-blend-mode:screen;animation:sweep 16s ease-in-out infinite alternate}
+.motes{position:absolute;left:0;top:62%;width:100%;height:18%}
 .motes i{left:var(--x);bottom:0;width:3px;height:3px;border-radius:50%;background:#FFE9B8;opacity:0;animation:mote var(--t) linear infinite;animation-delay:var(--d)}
 @keyframes drift{from{transform:scale(1)}to{transform:scale(1.07)}}
 @keyframes breathe{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.18)}}
@@ -64,7 +65,10 @@ h1,h2,h3{line-height:1.06;letter-spacing:-.025em;text-wrap:balance}
 @keyframes mote{0%{opacity:0;transform:translate(0,0)}15%{opacity:.8}70%{opacity:.5}100%{opacity:0;transform:translate(-18px,-90px)}}
 .hero.off .scene,.hero.off .scene i{animation-play-state:paused}
 @supports not (width:1cqw){.scene{top:0;left:0;width:100%;height:100%;animation:none}.scene img{object-fit:cover;object-position:62% 50%}.scene i,.motes{display:none}}
-@media (max-width:600px){.pool,.motes{display:none}}
+/* desktop uses the yard photo, framed so the excavator sits below and beside the form */
+@media (min-width:961px){.hero::after{background:linear-gradient(90deg,rgba(11,21,48,.9) 0%,rgba(11,21,48,.68) 38%,rgba(11,21,48,.12) 68%,rgba(11,21,48,.1) 100%),linear-gradient(0deg,rgba(11,21,48,.55) 0%,rgba(11,21,48,0) 22%)}.scene{--w:calc(max(100cqw,calc(100cqh*1.7684))*1.15);--h:calc(max(100cqh,calc(100cqw*.5655))*1.15);left:calc(100cqw - var(--w));top:clamp(calc(100cqh - var(--h)),calc(100cqh*.8 - var(--h)*.69),0px);transform-origin:85% 70%}}
+/* phones keep the original night photo; its light layers are desktop-only */
+@media (max-width:960px){.scene i,.motes{display:none}}
 .hero::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(90deg,rgba(11,21,48,.92) 0%,rgba(11,21,48,.72) 38%,rgba(11,21,48,.25) 70%,rgba(11,21,48,.35) 100%),linear-gradient(0deg,rgba(11,21,48,.9) 0%,rgba(11,21,48,0) 30%)}
 .hero>.wrap{position:relative;z-index:2}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
@@ -219,9 +223,9 @@ footer.ft a{color:#B9C2D3}
 
 <header class="hero">
 <div class="bg" id="scene" aria-hidden="true"><div class="par"><div class="scene">
-<picture><source type="image/webp" srcset="/uploads/nightshift-hero-800.webp 800w, /uploads/nightshift-hero.webp 1344w" sizes="100vw"><img src="/uploads/nightshift-hero.jpg" srcset="/uploads/nightshift-hero-800.jpg 800w, /uploads/nightshift-hero.jpg 1344w" sizes="100vw" width="1344" height="752" alt="" fetchpriority="high"></picture>
-<i class="pool"></i><i class="lt" style="--x:72.8%;--y:55.6%"></i><i class="lt" style="--x:74.4%;--y:55.5%;--d:-1.3s"></i><i class="lt sm" style="--x:69.9%;--y:60.5%;--d:-2.1s"></i><i class="lt sm" style="--x:88.4%;--y:36.2%;--d:-.7s"></i><i class="lt sm" style="--x:88.5%;--y:52.1%;--d:-2.6s"></i><i class="red" style="--x:88.7%;--y:7.6%"></i><i class="red" style="--x:98.3%;--y:10.2%;--d:-1.2s"></i>
-<span class="motes"><i style="--x:71%;--d:0s;--t:7s"></i><i style="--x:73%;--d:-2s;--t:9s"></i><i style="--x:75%;--d:-4s;--t:8s"></i><i style="--x:70%;--d:-5.5s;--t:10s"></i><i style="--x:74%;--d:-1s;--t:11s"></i><i style="--x:76%;--d:-6s;--t:7.5s"></i><i style="--x:72%;--d:-3.5s;--t:9.5s"></i><i style="--x:77%;--d:-7s;--t:8.5s"></i></span>
+<picture><source media="(min-width:961px)" type="image/webp" srcset="/uploads/nightshift-yard-1280.webp 1280w, /uploads/nightshift-yard-2000.webp 2000w" sizes="120vw"><source media="(min-width:961px)" srcset="/uploads/nightshift-yard-1280.jpg 1280w, /uploads/nightshift-yard-2000.jpg 2000w" sizes="120vw"><source type="image/webp" srcset="/uploads/nightshift-hero-800.webp 800w, /uploads/nightshift-hero.webp 1344w" sizes="100vw"><img src="/uploads/nightshift-hero.jpg" srcset="/uploads/nightshift-hero-800.jpg 800w, /uploads/nightshift-hero.jpg 1344w" sizes="100vw" width="1344" height="752" alt="" fetchpriority="high"></picture>
+<i class="pool"></i><i class="lt" style="--x:85%;--y:69%"></i><i class="lt" style="--x:88.1%;--y:68.8%;--d:-1.3s"></i><i class="lt sm" style="--x:86.65%;--y:79.75%;--d:-2.1s"></i><i class="lt sm" style="--x:79.75%;--y:66.3%;--d:-.7s"></i><i class="lt sm" style="--x:80.9%;--y:66.1%;--d:-3.1s"></i><i class="lt sm" style="--x:79.4%;--y:77.2%;--d:-2.6s"></i><i class="red" style="--x:92.65%;--y:52.6%"></i>
+<span class="motes"><i style="--x:82%;--d:0s;--t:7s"></i><i style="--x:84%;--d:-2s;--t:9s"></i><i style="--x:86%;--d:-4s;--t:8s"></i><i style="--x:81%;--d:-5.5s;--t:10s"></i><i style="--x:85%;--d:-1s;--t:11s"></i><i style="--x:87.5%;--d:-6s;--t:7.5s"></i><i style="--x:83%;--d:-3.5s;--t:9.5s"></i><i style="--x:88.5%;--d:-7s;--t:8.5s"></i></span>
 </div></div></div>
 <div class="wrap">
 <div class="nav"><a href="/"><img src="/uploads/nexum-logo-sm.png" width="560" height="144" alt="Nexum Commercial Finance"></a><a class="btn" href="#apply"><span class="lg">Start my application</span><span class="sm">Apply now</span></a></div>
@@ -411,7 +415,7 @@ form.addEventListener("input",function(e){var st=e.target.closest(".step");if(st
 
 /* ---------- step 1 cards: play once, then sit still ---------- */
 var reel=form.querySelector(".reel"),frames=reel.querySelectorAll("picture"),tag=reel.querySelector(".tag"),loc=form.querySelector(".loc"),ri=0,rt=0,running=false,loaded=false;
-function frame(i){frames.forEach(function(f,k){f.classList.toggle("prev",f.classList.contains("on")&&k!==i);f.classList.toggle("on",k===i)});setTimeout(function(){frames.forEach(function(f){f.classList.remove("prev")})},600);tag.textContent=frames[i].getAttribute("data-name").replace("&amp;","&")}
+function frame(i){frames.forEach(function(f,k){f.classList.toggle("prev",f.classList.contains("on")&&k!==i);f.classList.toggle("on",k===i)});setTimeout(function(){frames.forEach(function(f){f.classList.remove("prev")})},600);setTimeout(function(){tag.textContent=frames[i].getAttribute("data-name")},280)}
 function reelTick(){if(!running)return;if(cur!==1){running=false;frame(0);return}
  ri++;if(ri>=frames.length){running=false;frame(0);return}frame(ri);rt=setTimeout(reelTick,1500)}
 function play(){if(reduce||running||cur!==1)return;
