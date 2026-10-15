@@ -366,3 +366,75 @@ for fn in (g7, g8, g9, g10):
     for s in SIZES:
         fn(s)
 print("built", len(os.listdir(OUT)), "pages")
+
+# ---------------- Round 4: situation ads (each links to /?ad=<key> so the homepage headline matches) ----------------
+ZERO_NOTE = ("$0 down is available for qualified buyers, on lender approval. Not all applicants qualify. "
+             "Nexum Commercial Finance is a broker, not a lender.")
+
+def g11(size):  # stop renting: rent vs finance table   -> /?ad=stop-renting
+    css = """
+.bg img{object-position:50% 70%}
+.shade{background:linear-gradient(180deg,rgba(11,21,48,.96) 0%,rgba(11,21,48,.8) 40%,rgba(11,21,48,.55) 62%,rgba(11,21,48,.95) 100%)}
+.head{margin-top:36px;display:grid;gap:16px}
+.cmp{margin-top:var(--ct);border-radius:20px;overflow:hidden;background:rgba(11,21,48,.72);box-shadow:inset 0 0 0 1px rgba(157,184,245,.25)}
+.cmp div{display:grid;grid-template-columns:1fr 150px 150px;align-items:center;padding:var(--rp) 26px;border-top:1px solid rgba(157,184,245,.15)}
+.cmp div:first-child{border-top:0;padding-top:16px;padding-bottom:12px}
+.cmp div:first-child span{font-size:22px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#93A3C4;text-align:center}
+.cmp div:first-child span.nx{color:#fff;background:#1D4ED8;border-radius:10px;padding:6px 0}
+.cmp b{font-size:28px;font-weight:700}
+.cmp i{font-style:normal;text-align:center;font-size:40px;font-weight:900;line-height:1}
+.cmp i.y{color:#22C55E} .cmp i.n{color:#64748B}
+.bottom{display:grid;gap:20px}
+body.s1_1{--ct:26px;--rp:14px} body.s1_1 .cmp b{font-size:24px} body.s1_1 .cmp i{font-size:34px}
+body.s4_5{--ct:44px;--rp:22px} body.s9_16{--ct:70px;--rp:28px}
+"""
+    rows = [("Monthly payment", "y", "y"), ("It's yours at the end", "n", "y"), ("Adds value to your business", "n", "y")]
+    mark = {"y": "✓", "n": "✕"}
+    table = '<div><span></span><span>Rent</span><span class="nx">Finance</span></div>' + "".join(
+        f'<div><b>{t}</b><i class="{a}">{mark[a]}</i><i class="{b}">{mark[b]}</i></div>' for t, a, b in rows)
+    body = f"""<div class="bg"><img src="../wheel-loader.jpg"></div><div class="shade"></div>
+{LOGO}
+<div class="head"><h1>Stop renting.<br><em>Start owning.</em></h1><p class="sub">Your monthly rental could be a payment on a machine you own.</p></div>
+<div class="cmp">{table}</div>
+<div class="spacer"></div>
+<div class="bottom"><div class="cta"><span class="btn">See my options</span><small>No credit impact<br>to check</small></div><p class="note">{BROKER_NOTE}</p></div>"""
+    page("G11-stop-renting", size, body, css, h1=92)
+
+def g12(size):  # $0 down pill over the studio dozer   -> /?ad=zero-down
+    css = """
+.bg img{object-position:50% 100%}
+.shade{background:linear-gradient(180deg,rgba(11,21,48,.96) 0%,rgba(11,21,48,.86) 34%,rgba(11,21,48,0) 58%,rgba(11,21,48,0) 72%,rgba(11,21,48,.92) 100%)}
+.head{margin-top:44px;display:grid;gap:18px;max-width:900px}
+.pill{align-self:flex-start;margin-top:var(--pt);background:#fff;color:#0F172A;border-radius:28px;padding:24px 34px 22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.pill small{display:block;font-size:22px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#5B6576}
+.pill b{display:block;font-size:128px;font-weight:900;letter-spacing:-.04em;line-height:1;color:#1D4ED8}
+.pill span{display:block;font-size:22px;font-weight:700;margin-top:4px}
+.bottom{display:grid;gap:20px}
+body.s1_1{--pt:24px} body.s4_5{--pt:36px} body.s9_16{--pt:60px}
+body.s1_1 .bg img{object-position:40% 120%}
+body.s1_1 .pill b{font-size:96px} body.s1_1 .pill{padding:18px 28px 16px}
+"""
+    body = f"""<div class="bg"><img src="../dozer.jpg"></div><div class="shade"></div>
+{LOGO}
+<div class="head"><h1>Keep your cash.<br><em>Get the machine.</em></h1><p class="sub">Finance new or used equipment with little or nothing down.</p></div>
+<div class="pill"><small>Down payment</small><b>$0</b><span>for qualified buyers</span></div>
+<div class="spacer"></div>
+<div class="bottom"><div class="cta"><span class="btn">See if I qualify</span><small>No credit impact<br>to check</small></div><p class="note">{ZERO_NOTE}</p></div>"""
+    page("G12-zero-down", size, body, css, h1=86)
+
+def g13(size):  # won the bid   -> /?ad=won-the-bid
+    photo_ad("G13-won-the-bid", size, "u-cranes.jpg", "45% 40%",
+             "Won the bid? <em>Get the machine.</em>",
+             "Decisions often in 24–48 hours, so you can start the job on time.",
+             "Get matched", "No credit impact<br>to check", BROKER_NOTE, chip="New contract?")
+
+def g14(size):  # private sale / auction   -> /?ad=private-sale
+    photo_ad("G14-private-sale", size, "dump-truck.jpg", "50% 70%",
+             "Found it at auction? <em>We can finance it.</em>",
+             "Private sales, auctions and dealers. New or used equipment.",
+             "See my options", "No credit impact<br>to check", BROKER_NOTE, chip="Private sale · Auction · Dealer")
+
+for fn in (g11, g12, g13, g14):
+    for s in SIZES:
+        fn(s)
+print("built", len(os.listdir(OUT)), "pages")
