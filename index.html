@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" href="/vendor/react-18.3.1.production.min.js" as="script">
+<link rel="preload" href="/vendor/react-dom-18.3.1.production.min.js" as="script">
+<script>
+// Serve React from our own domain instead of unpkg.com. Same files, byte for byte
+// (they match the SRI hashes pinned in support.js), so one third-party outage can't blank the page.
+window.__resources = {
+  "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "/vendor/react-18.3.1.production.min.js",
+  "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "/vendor/react-dom-18.3.1.production.min.js"
+};
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -10,18 +20,18 @@
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nexum Commercial Finance | DFW & Nationwide Equipment Financing</title>
-<meta name="description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions in 24–48 hours, no obligation.">
+<meta name="description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions often in 24–48 hours, no obligation.">
 <link rel="canonical" href="https://nexumcf.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nexum Commercial Finance">
 <meta property="og:title" content="Nexum Commercial Finance | DFW & Nationwide Equipment Financing">
-<meta property="og:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions in 24–48 hours, no obligation.">
+<meta property="og:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions often in 24–48 hours, no obligation.">
 <meta property="og:url" content="https://nexumcf.com/">
-<meta property="og:image" content="https://nexumcf.com/uploads/nexum-logo.png">
+<meta property="og:image" content="https://nexumcf.com/uploads/nexum-share.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nexum Commercial Finance | DFW & Nationwide Equipment Financing">
-<meta name="twitter:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions in 24–48 hours, no obligation.">
-<meta name="twitter:image" content="https://nexumcf.com/uploads/nexum-logo.png">
+<meta name="twitter:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions often in 24–48 hours, no obligation.">
+<meta name="twitter:image" content="https://nexumcf.com/uploads/nexum-share.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +40,7 @@
   "description": "Nexum Commercial Finance connects established businesses with commercial equipment financing and business lines of credit through a network of third-party lenders. Based in the Dallas-Fort Worth area, serving businesses nationwide.",
   "url": "https://nexumcf.com/",
   "logo": "https://nexumcf.com/uploads/nexum-logo.png",
-  "image": "https://nexumcf.com/uploads/nexum-logo.png",
+  "image": "https://nexumcf.com/uploads/nexum-share.png",
   "areaServed": [
     { "@type": "City", "name": "Dallas-Fort Worth" },
     { "@type": "Country", "name": "United States" }
@@ -104,22 +114,22 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 @media(max-width:760px){.mobileCta{display:block!important}body{padding-bottom:74px}}
 @keyframes tilt3d{0%,100%{transform:rotateY(-9deg) rotateX(5deg)}50%{transform:rotateY(9deg) rotateX(2deg)}}
 .tilt3d{animation:tilt3d 9s ease-in-out infinite;transform-style:preserve-3d}
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv{transform:translateY(16px);transition:transform .7s cubic-bezier(.2,.7,.3,1)}
 .rv.on{opacity:1;transform:none}
 .floaty{animation:floaty 6s ease-in-out infinite}
 @media(max-width:560px){.grid-2{grid-template-columns:1fr!important}.cta{width:100%;text-align:center}}
 @media(max-width:640px){.hero-card{margin-top:10px}.hero-card .tilt3d{animation:none!important;transform:none!important;padding:20px!important}.hero-card .floaty{animation:none!important}}
 @media(max-width:760px){.deco-glow{display:none!important}.floaty{animation:none!important}.tilt3d{animation:none!important}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{transform:none!important}}
 </style>
 </helmet>
 
-<div style="background:var(--navy);color:#fff;text-align:center;padding:9px 20px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Now Funding · Equipment Financing &amp; Business Lines of Credit for Q3 2026</div>
+<div style="background:var(--navy);color:#fff;text-align:center;padding:9px 20px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Now Funding · Equipment Financing &amp; Business Lines of Credit for Q4 2026</div>
 
-<header style="position:sticky;top:0;z-index:100;background:rgba(245,245,245,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
+<header style="position:sticky;top:0;z-index:100;background:rgba(245,245,245,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
 <div style="max-width:1180px;margin:0 auto;padding:14px clamp(16px,4vw,32px);display:flex;align-items:center;justify-content:space-between;gap:20px">
 <div style="display:flex;align-items:center;gap:12px">
-<img src="uploads/nexum-logo.png" alt="Nexum Commercial Finance" style="height:44px;width:auto;display:block">
+<img src="uploads/nexum-logo-sm.png" width="560" height="144" alt="Nexum Commercial Finance" style="height:44px;width:auto;display:block">
 </div>
 <nav style="display:flex;align-items:center;gap:clamp(14px,2.4vw,30px)">
 <a href="#advantage" style="color:var(--navy2);font-size:14px;font-weight:500;display:none" class="navlink" style-hover="color:var(--blue)">Advantage</a>
@@ -346,7 +356,7 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 <div style="max-width:1180px;margin:0 auto">
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:center;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.1)">
 <div style="display:flex;align-items:center;gap:12px">
-<img src="uploads/nexum-logo.png" alt="Nexum Commercial Finance" style="height:42px;width:auto;display:block;border-radius:8px">
+<img src="uploads/nexum-logo-sm.png" width="560" height="144" alt="Nexum Commercial Finance" style="height:42px;width:auto;display:block;border-radius:8px">
 </div>
 <button onClick="{{ openForm }}" style="background:var(--blue);color:#fff;font-size:14px;font-weight:600;padding:13px 26px;border:none;border-radius:9px;cursor:pointer;transition:background .2s" style-hover="background:var(--blue-l)">Apply Now</button>
 </div>
@@ -374,7 +384,7 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:24px clamp(20px,4vw,34px) 0">
 <div>
 <div style="display:flex;align-items:center;gap:9px;margin-bottom:12px">
-<img src="uploads/nexum-logo.png" alt="Nexum Commercial Finance" style="height:38px;width:auto;display:block">
+<img src="uploads/nexum-logo-sm.png" width="560" height="144" alt="Nexum Commercial Finance" style="height:38px;width:auto;display:block">
 </div>
 <div style="font-size:clamp(22px,3.6vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.1">{{ modalTitle }}</div>
 </div>
@@ -442,7 +452,15 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 </div>
 </div>
 
+<label style="display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:11.5px;line-height:1.5;color:var(--gray2);cursor:pointer">
+<input type="checkbox" checked="{{ sms }}" onChange="{{ onSms }}" style="width:18px;height:18px;flex:none;margin-top:2px;accent-color:#1D4ED8">
+<span>{{ smsText }}</span>
+</label>
+
 <button onClick="{{ submit }}" disabled="{{ blocked }}" style="width:100%;margin-top:24px;background:var(--blue);color:#fff;font-size:15px;font-weight:600;padding:16px;border:none;border-radius:10px;cursor:pointer;transition:background .2s,opacity .2s;opacity:{{ submitOpacity }}" style-hover="background:var(--blue-d)">{{ submitLabel }}</button>
+<sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+<p role="alert" style="margin-top:14px;font-size:13px;font-weight:600;color:#B42318;text-align:center">{{ sendError }}</p>
+</sc-if>
 <sc-if value="{{ sending }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:16px">
 <span style="width:7px;height:7px;border-radius:50%;background:var(--blue);animation:dotPulse 1s ease-in-out infinite"></span>
@@ -479,6 +497,21 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 </sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+// Ad attribution: first-touch UTM and click IDs, kept for the visit so they survive in-page navigation.
+const ATTR = (() => {
+  const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid", "fbclid", "msclkid"];
+  let saved = {};
+  try { saved = JSON.parse(sessionStorage.getItem("nx_attr") || "{}"); } catch (e) {}
+  const q = new URLSearchParams(location.search), fresh = {};
+  keys.forEach(k => { if (q.get(k)) fresh[k] = q.get(k); });
+  const out = Object.keys(fresh).length ? fresh : saved;
+  if (!out.landing_page) out.landing_page = location.href;
+  if (!out.referrer && document.referrer) out.referrer = document.referrer;
+  try { sessionStorage.setItem("nx_attr", JSON.stringify(out)); } catch (e) {}
+  return out;
+})();
+// SMS opt-in wording. Keep identical to /section-179/ so every consent record matches the A2P registration.
+const SMS_TEXT = "Text me about my application. By checking this box, I agree to receive text messages from Nexum Commercial Finance at the number above. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of financing.";
 const YEARS = ["1 year+", "2 years", "3 years+", "5 years+", "10 years+"];
 const REVENUE = ["$5K+ / month", "$10K+ / month", "$15K+ / month", "$20K+ / month"];
 const CREDIT = ["Under 600", "600+", "650+", "700+", "750+"];
@@ -492,7 +525,7 @@ const STATS = [
 const TESTI = [
   { quote: "We needed a dozer to land a municipal contract and our bank wanted three weeks just to look at it. Nexum had an approval to me the next afternoon. Straight terms, no games.", name: "Marcus D.", role: "Texas", initials: "MD" },
   { quote: "I'd been turned down twice because of a rough year. They actually understood my numbers and found a lender who did too. Financed a used excavator with a down payment I could live with.", name: "Ray T.", role: "Ohio", initials: "RT" },
-  { quote: "Two trucks and a trailer financed in under a week. My advisor picked up every call and walked me through Section 179 so I knew exactly what I was saving. This is how it should work.", name: "Alicia M.", role: "Georgia", initials: "AM" }
+  { quote: "Two trucks and a trailer financed in under a week. My advisor picked up every call and explained the financing so I could plan around Section 179 with my CPA. This is how it should work.", name: "Alicia M.", role: "Georgia", initials: "AM" }
 ];
 const ic = p => React.createElement("span", { style: { display: "flex" }, dangerouslySetInnerHTML: { __html: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>` } });
 const FEATURES = [
@@ -525,9 +558,9 @@ const PROOF = ["40+ lenders in our network", "24–48 hr typical decision time",
 
 class Component extends DCLogic {
   state = {
-    formOpen: false, submitted: false, sending: false,
+    formOpen: false, submitted: false, sending: false, sendError: "",
     first: "", last: "", email: "", phone: "",
-    years: "", revenue: "", credit: "", need: "",
+    years: "", revenue: "", credit: "", need: "", sms: false,
     openFaq: -1, proofIndex: 0
   };
 
@@ -595,6 +628,7 @@ class Component extends DCLogic {
 
       proofText: PROOF[s.proofIndex],
       sending: s.sending,
+      sendError: s.sendError, hasError: !!s.sendError,
       stats: STATS,
       testimonials: TESTI,
       features: FEATURES,
@@ -607,6 +641,8 @@ class Component extends DCLogic {
       onLast: e => this.set("last", e.target.value),
       onEmail: e => this.set("email", e.target.value),
       onPhone: e => this.set("phone", e.target.value),
+      sms: s.sms, smsText: SMS_TEXT,
+      onSms: e => this.set("sms", e.target.checked),
       onYears: e => this.set("years", e.target.value),
       onRevenue: e => this.set("revenue", e.target.value),
       onCredit: e => this.set("credit", e.target.value),
@@ -617,26 +653,38 @@ class Component extends DCLogic {
       creditColor: s.credit ? "#0F172A" : "#9AA1AD",
       needColor: s.need ? "#0F172A" : "#9AA1AD",
 
-      blocked: !ok, submitOpacity: ok ? "1" : ".5",
+      blocked: !ok || s.sending, submitOpacity: ok && !s.sending ? "1" : ".5",
       submitLabel: s.sending ? "Sending…" : "See My Options",
       submit: () => {
-        if (!ok) return;
-        this.setState({ sending: true });
+        if (!ok || s.sending) return;
+        this.setState({ sending: true, sendError: "" });
         const payload = {
           funnel: "Nexum Commercial Finance",
+          lead_page: "main",
           first_name: s.first.trim(), last_name: s.last.trim(),
           full_name: (s.first.trim() + " " + s.last.trim()).trim(),
           email: s.email.trim(), phone: s.phone.trim(),
           years_in_business: s.years, monthly_revenue: s.revenue,
           credit_score: s.credit, equipment_needed: s.need,
           submitted_at: new Date().toLocaleString("en-US", { timeZone: "America/Chicago", dateStyle: "short", timeStyle: "medium" }) + " CT",
-          source_url: location.href
+          sms_consent: s.sms ? "yes" : "no",
+          sms_consent_text: s.sms ? SMS_TEXT : "",
+          source_url: location.href,
+          ...ATTR
         };
-        const done = () => this.setState({ submitted: true, sending: false });
+        // Only show success once the relay confirms GHL accepted the lead; otherwise keep the answers and ask to retry.
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 12000);
         fetch("/api/lead", {
-          method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
-        }).then(done).catch(done);
-        setTimeout(() => { if (this.state.sending) done(); }, 4000);
+          method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), signal: ctrl.signal
+        }).then(r => {
+          clearTimeout(timer);
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          this.setState({ submitted: true, sending: false, sendError: "" });
+        }).catch(() => {
+          clearTimeout(timer);
+          this.setState({ sending: false, sendError: "We couldn't send that. Check your connection and try again; your answers are still here." });
+        });
       },
       firstShown: s.first.trim() || "there",
       needShown: s.need || "commercial financing",

@@ -1,0 +1,9 @@
+# Internal files: keep them in the repo, out of the public site.
+.claude
+docs
+README.md
+config.js
+lead.mjs
+netlify
+netlify.toml
+.DS_Store
