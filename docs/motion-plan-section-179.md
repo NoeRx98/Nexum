@@ -21,3 +21,10 @@ Reduced motion: no push-in, parallax, sweep, dust or blinking (lights stay lit, 
 Battery: hero animations pause when the hero is off screen.
 Waivers: none
 ```
+
+## Homepage (`/`)
+
+Same plan as the year-end page, plus the year-end panel in the hero: the countdown digits roll
+into place once on load, the tax-year bar fills to today's position once, and the minutes update
+in place every 15 seconds (no looping motion). The panel hides itself after December 31.
+Reduced motion: digits and bar render at their final values with no movement.
