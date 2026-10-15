@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preload" href="/vendor/react.production.min.js" as="script">
-<link rel="preload" href="/vendor/react-dom.production.min.js" as="script">
+<link rel="preload" href="/vendor/react-18.3.1.production.min.js" as="script">
+<link rel="preload" href="/vendor/react-dom-18.3.1.production.min.js" as="script">
 <script>
 // Serve React from our own domain instead of unpkg.com. Same files, byte for byte
 // (they match the SRI hashes pinned in support.js), so one third-party outage can't blank the page.
 window.__resources = {
-  "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "/vendor/react.production.min.js",
-  "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "/vendor/react-dom.production.min.js"
+  "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "/vendor/react-18.3.1.production.min.js",
+  "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "/vendor/react-dom-18.3.1.production.min.js"
 };
 </script>
 <script src="./support.js"></script>
@@ -20,17 +20,17 @@ window.__resources = {
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nexum Commercial Finance | DFW & Nationwide Equipment Financing</title>
-<meta name="description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions in 24–48 hours, no obligation.">
+<meta name="description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions often in 24–48 hours, no obligation.">
 <link rel="canonical" href="https://nexumcf.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nexum Commercial Finance">
 <meta property="og:title" content="Nexum Commercial Finance | DFW & Nationwide Equipment Financing">
-<meta property="og:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions in 24–48 hours, no obligation.">
+<meta property="og:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions often in 24–48 hours, no obligation.">
 <meta property="og:url" content="https://nexumcf.com/">
 <meta property="og:image" content="https://nexumcf.com/uploads/nexum-share.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nexum Commercial Finance | DFW & Nationwide Equipment Financing">
-<meta name="twitter:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions in 24–48 hours, no obligation.">
+<meta name="twitter:description" content="Equipment financing and business lines of credit for established businesses in Dallas-Fort Worth and nationwide. Decisions often in 24–48 hours, no obligation.">
 <meta name="twitter:image" content="https://nexumcf.com/uploads/nexum-share.png">
 <script type="application/ld+json">
 {
@@ -458,6 +458,9 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 </label>
 
 <button onClick="{{ submit }}" disabled="{{ blocked }}" style="width:100%;margin-top:24px;background:var(--blue);color:#fff;font-size:15px;font-weight:600;padding:16px;border:none;border-radius:10px;cursor:pointer;transition:background .2s,opacity .2s;opacity:{{ submitOpacity }}" style-hover="background:var(--blue-d)">{{ submitLabel }}</button>
+<sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+<p role="alert" style="margin-top:14px;font-size:13px;font-weight:600;color:#B42318;text-align:center">{{ sendError }}</p>
+</sc-if>
 <sc-if value="{{ sending }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:16px">
 <span style="width:7px;height:7px;border-radius:50%;background:var(--blue);animation:dotPulse 1s ease-in-out infinite"></span>
@@ -555,7 +558,7 @@ const PROOF = ["40+ lenders in our network", "24–48 hr typical decision time",
 
 class Component extends DCLogic {
   state = {
-    formOpen: false, submitted: false, sending: false,
+    formOpen: false, submitted: false, sending: false, sendError: "",
     first: "", last: "", email: "", phone: "",
     years: "", revenue: "", credit: "", need: "", sms: false,
     openFaq: -1, proofIndex: 0
@@ -625,6 +628,7 @@ class Component extends DCLogic {
 
       proofText: PROOF[s.proofIndex],
       sending: s.sending,
+      sendError: s.sendError, hasError: !!s.sendError,
       stats: STATS,
       testimonials: TESTI,
       features: FEATURES,
@@ -649,11 +653,11 @@ class Component extends DCLogic {
       creditColor: s.credit ? "#0F172A" : "#9AA1AD",
       needColor: s.need ? "#0F172A" : "#9AA1AD",
 
-      blocked: !ok, submitOpacity: ok ? "1" : ".5",
+      blocked: !ok || s.sending, submitOpacity: ok && !s.sending ? "1" : ".5",
       submitLabel: s.sending ? "Sending…" : "See My Options",
       submit: () => {
-        if (!ok) return;
-        this.setState({ sending: true });
+        if (!ok || s.sending) return;
+        this.setState({ sending: true, sendError: "" });
         const payload = {
           funnel: "Nexum Commercial Finance",
           lead_page: "main",
@@ -668,11 +672,19 @@ class Component extends DCLogic {
           source_url: location.href,
           ...ATTR
         };
-        const done = () => this.setState({ submitted: true, sending: false });
+        // Only show success once the relay confirms GHL accepted the lead; otherwise keep the answers and ask to retry.
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 12000);
         fetch("/api/lead", {
-          method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
-        }).then(done).catch(done);
-        setTimeout(() => { if (this.state.sending) done(); }, 4000);
+          method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), signal: ctrl.signal
+        }).then(r => {
+          clearTimeout(timer);
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          this.setState({ submitted: true, sending: false, sendError: "" });
+        }).catch(() => {
+          clearTimeout(timer);
+          this.setState({ sending: false, sendError: "We couldn't send that. Check your connection and try again; your answers are still here." });
+        });
       },
       firstShown: s.first.trim() || "there",
       needShown: s.need || "commercial financing",
