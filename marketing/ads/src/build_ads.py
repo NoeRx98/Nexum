@@ -147,7 +147,7 @@ body.s9_16{--ct:60px;--cg:10px;--cf:36px;--cl:72px}
         cls = "d31" if d == 31 else ("x" if d < 15 else "")
         days += f'<b class="{cls}">{d}</b>'
     body = f"""{LOGO}
-<div class="head"><span class="chip">Year-end financing</span><h1>The tax year ends <em>December 31.</em></h1><p class="sub">Finance the machine now and put it to work this year.</p></div>
+<div class="head"><span class="chip">Year-end financing</span><h1>The tax year ends <em>December&nbsp;31.</em></h1><p class="sub">Finance the machine now and put it to work this year.</p></div>
 <div class="cal"><header>December <span>2026</span></header><div class="g">{days}</div></div>
 <div class="spacer"></div>
 <div class="bottom"><div class="cta"><span class="btn">Start before Dec 31</span><small>5-minute application<br>40+ lenders</small></div><p class="note">{TAX_NOTE} {BROKER_NOTE}</p></div>"""
@@ -190,6 +190,69 @@ body.s1_1 .bg img{object-position:50% 140%}
     page("Y3-section-179", size, body, css, h1=80)
 
 for fn in (g1, g2, g3, y1, y2, y3):
+    for s in SIZES:
+        fn(s)
+print("built", len(os.listdir(OUT)), "pages")
+
+# ---------------- Unsplash photo concepts ----------------
+# Photos are the owner's Unsplash picks (free licence), brand badges / plates / windshields blurred in build.
+
+def photo_ad(name, size, img, pos, h1, sub, btn, small, note, chip="", mode="band", h1size=88):
+    if mode == "band":
+        css = f"""
+.bg{{bottom:auto!important;height:var(--bh)}}
+.bg img{{object-position:{pos}}}
+.shade{{background:linear-gradient(180deg,rgba(11,21,48,.55) 0%,rgba(11,21,48,0) 22%,rgba(11,21,48,0) calc(var(--bh)*.55),#0B1530 var(--bh))}}
+.ad{{background:#0B1530}}
+body.s1_1{{--bh:640px}} body.s4_5{{--bh:820px}} body.s9_16{{--bh:1180px}}
+"""
+    else:
+        css = f"""
+.bg img{{object-position:{pos}}}
+.shade{{background:linear-gradient(180deg,rgba(11,21,48,.75) 0%,rgba(11,21,48,.15) 30%,rgba(11,21,48,.25) 52%,rgba(11,21,48,.92) 80%,#0B1530 100%)}}
+"""
+    css += ".head{display:grid;gap:16px}.bottom{display:grid;gap:20px;margin-top:28px}"
+    chip_html = f'<span class="chip">{chip}</span>' if chip else ""
+    small_html = f"<small>{small}</small>" if small else ""
+    body = f"""<div class="bg"><img src="../{img}"></div><div class="shade"></div>
+{LOGO}
+<div class="spacer"></div>
+<div class="head">{chip_html}<h1>{h1}</h1><p class="sub">{sub}</p></div>
+<div class="bottom"><div class="cta"><span class="btn">{btn}</span>{small_html}</div><p class="note">{note}</p></div>"""
+    page(name, size, body, css, h1=h1size)
+
+def g4(size):
+    photo_ad("G4-haul-truck", size, "u-haul-truck.jpg", "50% 55%",
+             "Bigger jobs need <em>bigger iron.</em>",
+             "Finance new or used equipment through 40+ lenders. Decisions often in 24–48 hours.",
+             "See my options", "No credit impact<br>to check", BROKER_NOTE)
+
+def g5(size):
+    photo_ad("G5-semi", size, "u-semi.jpg", "60% 60%",
+             "Your next truck, <em>financed.</em>",
+             "Trucks and trailers for established businesses. One application, 40+ lenders.",
+             "Get matched", "5-minute<br>application", BROKER_NOTE)
+
+def g6(size):
+    photo_ad("G6-dozer", size, "u-dozer.jpg", "55% 55%",
+             "Keep your cash. <em>Finance the dozer.</em>",
+             "No-money-down options for qualified borrowers. Compare offers side by side.",
+             "Check my options", "No credit impact<br>to check", BROKER_NOTE)
+
+def y4(size):
+    photo_ad("Y4-cranes-dusk", size, "u-cranes.jpg", "45% 40%",
+             "Tax year 2026 <em>ends December&nbsp;31.</em>",
+             "Finance the equipment and put it in service before the year runs out.",
+             "Start before Dec 31", "40+ lenders<br>5-minute application", TAX_NOTE + " " + BROKER_NOTE,
+             chip="Year-end financing", mode="full", h1size=84)
+
+def y5(size):
+    photo_ad("Y5-fleet", size, "u-box-trucks.jpg", "45% 50%",
+             "Adding trucks <em>before year-end?</em>",
+             "Trucks financed and put in service by December 31 may qualify for Section 179. Ask your CPA.",
+             "Get matched before Dec 31", "", TAX_NOTE + " " + BROKER_NOTE, chip="Fleet upgrade")
+
+for fn in (g4, g5, g6, y4, y5):
     for s in SIZES:
         fn(s)
 print("built", len(os.listdir(OUT)), "pages")
