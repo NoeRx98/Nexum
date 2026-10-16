@@ -45,3 +45,14 @@ the homepage; it can be restored from git history next year.
 3. The Spanish page (`/es/`) shows a Spanish opt-in, and `sms_consent_text` carries that Spanish text.
    Add the Spanish wording and the `/es/` URL to the A2P registration before texting Spanish leads.
 4. If the opt-in wording changes, change it in `index.html` (`#smsText`) and in the Spanish build and update the A2P registration to match.
+
+## Testing the webhook after launch
+
+- The relay accepts at most 5 submissions per 10 minutes from one internet connection. Extra test
+  submissions still show the success screen but are dropped, so space tests out or switch networks
+  (for example Wi-Fi, then phone data).
+- Use a real-looking email (name@domain.com) and a 10-digit phone, or the spam filter drops the test.
+- Test both pages: `/` (expect `language: en`) and `/es/` (expect `language: es`), and both
+  "What do you need?" choices.
+- If a lead does not arrive, check Vercel > Logs for `LEAD_DELIVERY_FAILED` or `LEAD_UNCONFIRMED`;
+  the full lead is printed there.
