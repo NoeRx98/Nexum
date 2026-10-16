@@ -9,3 +9,5 @@ netlify.toml
 .DS_Store
 marketing
 tools
+tests
+.github
