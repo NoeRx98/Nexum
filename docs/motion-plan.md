@@ -1,4 +1,7 @@
-# Motion Plan: Nexum /section-179/
+# Motion Plan: Nexum
+
+The year-end page (`/section-179/`) was taken down for 2026; its plan is kept below because the
+homepage reuses its hero scene and form motion.
 
 ```
 MOTION PLAN — Nexum Commercial Finance, year-end page
@@ -25,6 +28,6 @@ Waivers: none
 ## Homepage (`/`)
 
 Same plan as the year-end page, plus the year-end panel in the hero: the countdown digits roll
-into place once on load, the tax-year bar fills to today's position once, and the minutes update
+into place once on load, the year bar fills to today's position once, and the minutes update
 in place every 15 seconds (no looping motion). The panel hides itself after December 31.
 Reduced motion: digits and bar render at their final values with no movement.
