@@ -367,11 +367,11 @@ for fn in (g7, g8, g9, g10):
         fn(s)
 print("built", len(os.listdir(OUT)), "pages")
 
-# ---------------- Round 4: situation ads (each links to /?ad=<key> so the homepage headline matches) ----------------
+# ---------------- Round 4: situation ads  ----------------
 ZERO_NOTE = ("$0 down is available for qualified buyers, on lender approval. Not all applicants qualify. "
              "Nexum Commercial Finance is a broker, not a lender.")
 
-def g11(size):  # stop renting: rent vs finance table   -> /?ad=stop-renting
+def g11(size):  # stop renting: rent vs finance table
     css = """
 .bg img{object-position:50% 70%}
 .shade{background:linear-gradient(180deg,rgba(11,21,48,.96) 0%,rgba(11,21,48,.8) 40%,rgba(11,21,48,.55) 62%,rgba(11,21,48,.95) 100%)}
@@ -400,7 +400,7 @@ body.s4_5{--ct:44px;--rp:22px} body.s9_16{--ct:70px;--rp:28px}
 <div class="bottom"><div class="cta"><span class="btn">See my options</span><small>No credit impact<br>to check</small></div><p class="note">{BROKER_NOTE}</p></div>"""
     page("G11-stop-renting", size, body, css, h1=92)
 
-def g12(size):  # $0 down pill over the studio dozer   -> /?ad=zero-down
+def g12(size):  # $0 down pill over the studio dozer
     css = """
 .bg img{object-position:50% 100%}
 .shade{background:linear-gradient(180deg,rgba(11,21,48,.96) 0%,rgba(11,21,48,.86) 34%,rgba(11,21,48,0) 58%,rgba(11,21,48,0) 72%,rgba(11,21,48,.92) 100%)}
@@ -422,13 +422,13 @@ body.s1_1 .pill b{font-size:96px} body.s1_1 .pill{padding:18px 28px 16px}
 <div class="bottom"><div class="cta"><span class="btn">See if I qualify</span><small>No credit impact<br>to check</small></div><p class="note">{ZERO_NOTE}</p></div>"""
     page("G12-zero-down", size, body, css, h1=86)
 
-def g13(size):  # won the bid   -> /?ad=won-the-bid
+def g13(size):  # won the bid
     photo_ad("G13-won-the-bid", size, "u-cranes.jpg", "45% 40%",
              "Won the bid? <em>Get the machine.</em>",
              "Decisions often in 24–48 hours, so you can start the job on time.",
              "Get matched", "No credit impact<br>to check", BROKER_NOTE, chip="New contract?")
 
-def g14(size):  # private sale / auction   -> /?ad=private-sale
+def g14(size):  # private sale / auction
     photo_ad("G14-private-sale", size, "dump-truck.jpg", "50% 70%",
              "Found it at auction? <em>We can finance it.</em>",
              "Private sales, auctions and dealers. New or used equipment.",

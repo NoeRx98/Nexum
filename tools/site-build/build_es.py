@@ -29,15 +29,6 @@ T=[
 ('>Simple application<','>Solicitud sencilla<'),
 ('>Competitive financing options<','>Opciones de financiamiento competitivas<'),
 ('>Dedicated support from application to funding<','>Un asesor dedicado de principio a fin<'),
-# ad-matched headlines
-('Stop renting. <span>Start owning your equipment.</span>','Deje de rentar. <span>Sea dueño de su equipo.</span>'),
-('Your monthly rental could be a payment on a machine you own. We match your deal first, then send it only to lenders that fit.','Lo que paga de renta cada mes podría ser el pago de una máquina propia. Primero estudiamos su caso y luego lo enviamos solo a los prestamistas adecuados.'),
-('Keep your cash. <span>$0 down for qualified buyers.</span>','Cuide su efectivo. <span>$0 de enganche para compradores calificados.</span>'),
-('Finance new or used equipment with little or nothing down, on approval. We match your deal first, then send it only to lenders that fit.','Financie equipo nuevo o usado con poco o nada de enganche, sujeto a aprobación. Primero estudiamos su caso y luego lo enviamos solo a los prestamistas adecuados.'),
-('Won the bid? <span>Get the machine.</span>','¿Ganó el contrato? <span>Consiga la máquina.</span>'),
-('Decisions often in 24–48 hours, so you can start the job on time. We match your deal first, then send it only to lenders that fit.','Decisiones a menudo en 24–48 horas, para que empiece el trabajo a tiempo. Primero estudiamos su caso y luego lo enviamos solo a los prestamistas adecuados.'),
-('Found it at auction? <span>We can finance it.</span>','¿Lo encontró en una subasta? <span>Lo podemos financiar.</span>'),
-('Private sales, auctions and dealers. New or used equipment. We match your deal first, then send it only to lenders that fit.','Ventas privadas, subastas y distribuidores. Equipo nuevo o usado. Primero estudiamos su caso y luego lo enviamos solo a los prestamistas adecuados.'),
 # year-end tracker
 ('aria-label="Time left in 2026"','aria-label="Tiempo restante de 2026"'),
 ('<i></i>2026 ends in<','<i></i>2026 termina en<'),
