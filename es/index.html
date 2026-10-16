@@ -608,7 +608,7 @@ form.addEventListener("submit",function(e){
   submitted_at:new Date().toLocaleString("en-US",{timeZone:"America/Chicago",dateStyle:"short",timeStyle:"medium"})+" CT",
   source_url:location.href,_gotcha:$("gotcha").value};
  for(var k in ATTR)lead[k]=ATTR[k];
- var ctrl=new AbortController(),t=setTimeout(function(){ctrl.abort()},12000);
+ var ctrl=new AbortController(),t=setTimeout(function(){ctrl.abort()},20000);
  fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead),signal:ctrl.signal})
  .then(function(r){clearTimeout(t);if(!r.ok)throw new Error("HTTP "+r.status);$("doneH").textContent="Solicitud recibida, "+first+".";$("doneNeed").textContent=pickVal("need")==="Business line of credit"?"una línea de crédito para su negocio":"financiamiento de equipo comercial";show(4);bars.forEach(function(b){b.classList.add("on")})})
  .catch(function(){clearTimeout(t);btn.disabled=false;btn.textContent="Ver mis opciones";fail(3,"No pudimos enviarlo. Revise su conexión e intente otra vez; sus respuestas siguen aquí.")});

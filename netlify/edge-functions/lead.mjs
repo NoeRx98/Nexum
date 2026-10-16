@@ -39,6 +39,8 @@ function looksReal(lead) {
   return true;
 }
 
+// Returns "ok", "error" (GHL refused or could not be reached: safe to retry) or
+// "timeout" (GHL may already have the lead: retrying could create a duplicate).
 async function postJson(url, body, ms = 8000) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), ms);
@@ -49,9 +51,9 @@ async function postJson(url, body, ms = 8000) {
       body: JSON.stringify(body),
       signal: ctrl.signal
     });
-    return res.ok;
-  } catch {
-    return false;
+    return res.ok ? "ok" : "error";
+  } catch (e) {
+    return ctrl.signal.aborted ? "timeout" : "error";
   } finally {
     clearTimeout(timer);
   }
@@ -94,15 +96,30 @@ export default async (request, context) => {
   lead.client_ip = ip;
   lead.relayed_at = new Date().toISOString();
 
-  // Try GHL: immediate, then two retries with backoff.
-  let delivered = await postJson(webhook, lead);
-  for (let wait of [600, 2000]) {
-    if (delivered) break;
+  // Try GHL, retrying only clear failures. Worst case stays well under the browser's 20 s wait.
+  let result = await postJson(webhook, lead);
+  for (const wait of [400, 1200]) {
+    if (result !== "error") break;
     await new Promise(r => setTimeout(r, wait));
-    delivered = await postJson(webhook, lead);
+    result = await postJson(webhook, lead);
   }
 
-  if (delivered) return Response.json({ ok: true });
+  if (result === "ok") return Response.json({ ok: true });
+
+  if (result === "timeout") {
+    // GHL was too slow to answer. It most likely has the lead, so do not resend (that makes
+    // duplicates) and do not ask the customer to resubmit. Log it so it can be checked.
+    console.warn("LEAD_UNCONFIRMED", client, JSON.stringify(lead));
+    if (alertUrl) {
+      await postJson(alertUrl, {
+        alert: "Lead sent but GHL did not confirm. Check it arrived.",
+        client, site: request.headers.get("host") || "",
+        lead_name: lead.full_name || lead.first_name || "", lead_email: lead.email || "",
+        lead_phone: lead.phone || "", failed_at: new Date().toISOString(), full_lead: JSON.stringify(lead)
+      });
+    }
+    return Response.json({ ok: true, unconfirmed: true });
+  }
 
   // Delivery failed. Log the whole lead so it is recoverable from
   // Netlify > Logs > Functions, then try to alert a human.
